@@ -1,0 +1,52 @@
+>about
+author	alvin
+company	OpenAMS
+version	1.0
+discription	call log management
+
+>service
+sys/contact	open	1
+sys/contact	QueryInterface	0x80
+
+>string	ENGLISH	SM_CHINESE
+STR_TITLE	CallLog	通话记录
+STR_OUTGOING_CALL	Outgoing	呼出
+STR_INCOMING_CALL	Incoming	呼入
+STR_MISSED_CALL	Missed	未接来电
+STR_REJECTED_CALL	Rejected	拒接
+STR_ALL_CALL	All	全部通话
+STR_CALL_DURATION	Duration	持续时间
+STR_CALL_TIMES	Calls	次通话
+
+>image
+ICON_APPLICATION	calllog.bmp
+IMG_OUTGOING_CALL	outgoing.gif
+IMG_INCOMING_CALL	incoming.gif
+IMG_MISSED_CALL	missed.gif
+IMG_REJECTED_CALL	rejected.gif
+
+>widget	window	WIN_MAIN
+title	STR_TITLE
+bg_color	0xfff0f0f0
+
+>widget	listctrl	LIST	WIN_MAIN
+bound	220	176	0	0	220	144
+bound	240	320	0	0	240	240
+border	none
+
+>widget	window	WIN_VIEW
+title	STR_TITLE
+
+>widget	label	LABEL_NUMBER	WIN_VIEW
+bound	220	176	0	0	220	20
+bound	240	320	0	0	240	20
+
+>widget	label	LABEL_TIME	WIN_VIEW
+title	STR_TIME
+bound	220	176	0	20	220	20
+bound	240	320	0	20	240	20
+
+>widget	label	LABEL_DURATION	WIN_VIEW
+title	STR_CALL_DURATION
+bound	220	176	0	40	220	20
+bound	240	320	0	40	240	20

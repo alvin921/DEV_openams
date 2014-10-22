@@ -1,0 +1,78 @@
+#ifndef PACK_calllog_HI
+#define PACK_calllog_HI
+
+
+#include "pack_calllog.h"
+#include "calllog_resid.h"
+
+#include "wgt_listctrl.h"
+#include "wgt_menu.h"
+#if defined(FTR_SOFT_KEY)
+#include "wgt_softkey.h"
+#endif
+#include "wgt_label.h"
+#include "wgt_button.h"
+#include "wgt_pushbutton.h"
+
+
+#define	PACK_GUID_SELF	PACK_GUID_calllog
+
+#define	BTN_HEIGHT		20
+#define	BTN_WIDTH		80
+#define	BTN_Y_OFFSET	5
+#if 1//defined(FTR_NO_INPUT_KEY)
+#define	LIST_Y_OFFSET	(BTN_Y_OFFSET+BTN_HEIGHT+BTN_Y_OFFSET)
+#else
+#define	LIST_Y_OFFSET	0
+#endif
+
+#define	LINE_MARGIN 	4
+#define	LINE_HEIGHT	prod_ui_list_item_height()
+
+typedef struct {
+#if defined(FTR_COMM_SESSION_SUPPORT)
+	t_HDataSet	hdb_sess;
+#endif
+	t_HDataSet	hdb;
+	int		cursor;
+}calllog_glob_t;
+
+enum {
+	MOD_ID_CALLLOG_MAIN = MOD_ID_MAIN,
+	MOD_ID_CALLLOG_OPEN_CONTACT,
+	
+	MOD_ID_CALLLOG_MSI_GET = MOD_ID_FUNC,
+};
+
+
+enum {
+	BY_NONE,
+	BY_SID,
+	BY_NUMBER,
+};
+
+extern t_GClass class_calllog;
+#if defined(FTR_COMM_SESSION_SUPPORT)
+extern t_GClass class_calllogview;
+#endif
+
+BEGIN_DECLARATION
+	
+error_t	calllog_ViewWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+error_t	calllog_MainWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+void	db_calllog_redraw_record(t_HDataSet hdb, int index, t_HGDI gdi, t_GuiViewType viewtype, int width, int height, gboolean hilight);
+void db_calllog_view_record(t_HDataSet hds, int index);
+void	cs_redraw_record(t_HDataSet hdb, int index, t_HGDI gdi, t_GuiViewType viewtype, int width, int height, gboolean hilight);
+void cs_view_record(t_HDataSet hds, int index);
+error_t	calllog_ViewSessionWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+
+//2 <sparam>=BY_SID|BY_NUMBER
+//2 <lparam>=<sid> or <number>
+void	wgt_calllog_attach(t_HWidget widget, t_sparam sparam, t_lparam lparam);
+void	wgt_calllog_attach_contact(t_HWidget handle, t_CSessionID sid);
+void	wgt_calllog_contact_dial(t_HWidget handle);
+void	wgt_calllog_contact_more_op(t_HWidget handle);
+
+END_DECLARATION
+
+#endif

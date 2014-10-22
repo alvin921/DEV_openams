@@ -1,0 +1,32 @@
+#ifndef PACK_explorer_HI
+#define PACK_explorer_HI
+
+#include "pack_explorer.h"
+#include "explorer_resid.h"
+
+#include "wgt_listctrl.h"
+#include "wgt_menu.h"
+#if defined(FTR_SOFT_KEY)
+#include "wgt_softkey.h"
+#endif
+#include "wgt_label.h"
+
+#define	PACK_GUID_SELF	PACK_GUID_explorer
+
+//2 wgt_explorer控件内部子控件
+enum {
+	RESID_DENTRY_COMBO_STORAGE = RESID_CTRL_DYNAMIC,
+	RESID_DENTRY_COMBO_VIEW,
+	RESID_DENTRY_LIST,
+	RESID_DENTRY_MENU_DIROPT,
+	RESID_DENTRY_MENU_FILEOPT,
+	RESID_DENTRY_OPEN,
+};
+
+
+typedef struct {
+	gu32		v;
+}t_Global;
+
+#endif
+

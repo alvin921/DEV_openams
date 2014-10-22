@@ -1,0 +1,32 @@
+#ifndef PACK_map_HI
+#define PACK_map_HI
+
+
+#include "pack_map.h"
+#include "map_resid.h"
+
+#include "wgt_listctrl.h"
+#include "wgt_menu.h"
+#if defined(FTR_SOFT_KEY)
+#include "wgt_softkey.h"
+#endif
+#include "wgt_label.h"
+
+#define	PACK_GUID_SELF	PACK_GUID_map
+
+typedef struct {
+	gu32		v;
+}t_Global;
+
+
+enum {
+	MOD_ID_ADDRESS_BROWSE	= MOD_ID_MAIN + 1
+};
+
+BEGIN_DECLARATION
+	
+error_t	map_MainWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+
+END_DECLARATION
+
+#endif

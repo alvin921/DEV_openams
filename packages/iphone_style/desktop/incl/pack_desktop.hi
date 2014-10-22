@@ -1,0 +1,43 @@
+#ifndef PACK_desktop_HI
+#define PACK_desktop_HI
+
+#include "pack_desktop.h"
+#include "desktop_resid.h"
+#include "pack_sys.h"
+
+#include "wgt_listctrl.h"
+#include "wgt_menu.h"
+#if defined(FTR_SOFT_KEY)
+#include "wgt_softkey.h"
+#endif
+#include "wgt_label.h"
+
+#define	PACK_GUID_SELF	PACK_GUID_desktop
+
+enum {
+	MOD_ID_SCREENSAVER = MOD_ID_MAIN+1,
+	MOD_ID_SHUTDOWN
+};
+
+
+enum {
+	SLIDER_NONE,
+	SLIDER_TO_UNLOCK,
+	SLIDER_TO_POWEROFF,
+	SLIDER_CUSTOM,		//2 for call or others, notify callback MUST be provided!!!
+};
+
+typedef struct {
+	gu32		data;
+}t_DesktopGlobData;
+
+BEGIN_DECLARATION
+
+error_t	desktop_MainWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+error_t 		ScreenSaverAppMsgHandler(gpointer globPtr, t_AmosEvent   evt, t_sparam sparam, t_lparam lparam);
+error_t 		ShutdownAppMsgHandler(gpointer globPtr, t_AmosEvent   evt, t_sparam sparam, t_lparam lparam);
+t_HWidget		wgt_slider_create(t_HWidget parent, gu8 type);
+
+END_DECLARATION
+
+#endif

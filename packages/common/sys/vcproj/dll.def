@@ -1,0 +1,19 @@
+EXPORTS
+	;class_dentry DATA
+	dlg_editor_show
+
+	class_DSAppStore DATA
+	DSAppStore_New
+	DSAppStore_GetRootNode
+	DSAppStore_GetCWD
+	DSAppStore_GetNode
+	DSAppStore_SetIconSize
+	AppStore_AddDir
+	AppStore_AddApp
+	AppStore_AddByMime
+	AppStore_AddByMenuTree
+
+	DSToday_Create
+
+	listctrl_attach_mime_method
+	

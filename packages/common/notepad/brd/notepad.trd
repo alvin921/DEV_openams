@@ -1,0 +1,9 @@
+>string	ENGLISH	SM_CHINESE
+STR_TITLE	Notepad	ÎÄ±¾ÔÄ¶Á
+
+>image
+ICON_APPLICATION	Notes.bmp
+
+>widget	window	WIN_MAIN
+title	STR_TITLE
+

@@ -1,0 +1,49 @@
+POP3服务器回送的响应信息由一个状态码和一个可能跟有附加信息的命令组成。所有响应也以回车换行结束（发送命令也是）。状态码有两种：“确定”（“+OK”）和“失败”（“-ERR”）。对于客户端发送的每一条命令，服务器都会回送状态码。因此在客户端程序中，可以通过服务器回送的状态码对应的字符，即判断第一个字符是“+”号还是“-”号来确定服务器是否正确响应客户端发送的命令。
+
+
+【USER】
+》USER myname@mail.com
+	+OK welcome on this server.
+
+【PASS】
+》PASS <密码>
+	+OK myname logged in at 20:15
+
+【STAT】
+功能：从服务器中获取邮件总数和总字节数。
+服务器返回：邮件总数和总字节数。
+》STAT\r\n
+	+OK 2 320\r\n（表示2封邮件，共320字节）
+
+【LIST】
+LIST命令针对pop3邮箱会首先返回+ok 邮件总数 邮件总大小，但对于pop邮箱则只返回+ok状态字符，因此最好还是通过STAT来判断邮件总数
+》LIST\r\n
+	+OK 2 320\r\n
+	1 120\r\n
+	2 200\r\n
+	.\r\n
+>LIST 1\r\n
+	+OK 1 120\r\n
+
+【RETR】
+》RETR 1\r\n
+	+OK 120\r\n
+	<邮件文本>
+	\r\n.\r\n
+
+"\r\n.\r\n"表示结束
+【DELE】
+功能：服务器将邮件标记为删除，当执行QUIT命令时才真正删除。(可以通过RSET 命令进行撤消删除 )
+服务器返回：+OK成功；-ERR错误。
+》DELE 1
+	+OK 1 Deleted
+
+【UIDL】
+可带参数，也可不带，一般不带参数，获取所有邮件uidl
+》UIDL\r\n
+	+OK\r\n
+	<index> <uidl>\r\n
+	<index> <uidl>\r\n
+	<index> <uidl>\r\n
+	<index> <uidl>\r\n
+	.\r\n		表示结束

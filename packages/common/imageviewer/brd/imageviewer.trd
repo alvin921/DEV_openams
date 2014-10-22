@@ -1,0 +1,13 @@
+>string	ENGLISH	SM_CHINESE
+STR_TITLE	Photo	ÕÕÆ¬
+STR_SELECT_ALBUM	Choose Album	Ïà²á
+
+>image
+ICON_APPLICATION	icon.bmp
+IMG_UNKNOWN	unknown.bmp
+
+>widget	window	WIN_MAIN
+title	STR_TITLE
+
+>widget	listctrl	LIST_MAIN	WIN_MAIN
+

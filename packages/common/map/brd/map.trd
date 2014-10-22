@@ -1,0 +1,8 @@
+>string	ENGLISH	SM_CHINESE
+STR_TITLE	Map	µØÍ¼
+
+>image
+ICON_APPLICATION	Maps.bmp
+
+>widget	window	WIN_MAIN
+title	STR_TITLE

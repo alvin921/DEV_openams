@@ -1,0 +1,9 @@
+EXPORTS
+	class_softkey DATA
+		sk_set_text
+		sk_set_text_align
+		sk_set_callback
+		sk_set_popup
+		sk_get_popup
+		sk_set_app
+	

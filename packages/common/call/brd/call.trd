@@ -1,0 +1,188 @@
+>about
+author	alvin
+company	OpenAMS
+version	1.0
+discription	dialer & call for E66
+
+>service
+sys/dialer	open	0
+# Incoming call
+sys/call	open	1
+# Outgoing call
+sys/contact	send	2
+
+>string	ENGLISH	SM_CHINESE
+STR_TITLE	Call	拨号
+STR_DIAL	Dial	拨号
+STR_IP_DIAL	IP Dial	IP拨号
+STR_OUTGOING	Outgoing	呼出
+STR_INCOMING	Incoming	呼入
+STR_CONNECT	Connected	呼叫已连接
+STR_DISCONNECT	Disconnected	通话结束
+STR_WAITING	Call Waiting	对方呼叫等待
+STR_ONHELD	Call Onheld	对方保持呼叫
+STR_RESUMED	Call Resumed	对方恢复呼叫
+STR_IN_MPTY	In MPTY	多方通话
+STR_AUDIO_ON	Audio On	语音通道开启
+STR_AUDIO_OFF	Audio Off	语音通道关闭
+STR_USER_SUSPENDED	User Suspended	网络挂起呼叫
+STR_USER_RESUMED	User Resumed	网络恢复呼叫
+STR_BARRING_ALL	Barring All	禁止所有电话
+STR_I_FORWARDED_CALL	Forwared Call Incoming	被转移的来电
+STR_I_FORWARDED	Incoming Forwarded	来电被转移
+STR_I_BARRING	Barring	禁接来电
+STR_I_BARRING_ALL	Barring All Incoming Calls	禁接所有来电
+STR_I_BARRING_ROAMING	Barring Incomings When Roaming	漫游时禁接来电
+STR_O_PROCEED	Outgoing Proceeded	呼叫中
+STR_O_ALERT	Outgoing Alert	呼叫响铃中
+STR_O_FORWARED	Outgoing Forwarded	呼叫被转移
+STR_O_BARRING	Outgoing Barring	禁拨当前电话
+STR_O_BARRING_ALL	Outgoing Barring All	禁拨所有电话
+STR_O_BARRING_INTERNATION	Outgoing Barring INT	禁拨国际电话
+STR_O_BARRING_INT_EXCEPT_HONE	Barring INT Except Home	禁拨国外电话
+
+STR_FORWARDING_ALL	Forwarding All	所有通话被转移
+STR_ALL_COND_FORWARDING	All Cond. Forwarding	条件转移已开启
+STR_FORWARDING_ON_BUSY	Forwarding On Busy	遇忙转移
+STR_FORWARDING_ON_NOREPLY	Forwarding On Noreply	无应答转移
+STR_FORWARDING_ON_UNREACHABLE	Forwarding On Unreachable	联络不到转移
+
+STR_SPEAKER_ON	SpkOn	免提
+STR_SPEAKER_OFF	SpkOff	听筒
+STR_MUTE	Mute	静音
+STR_UNMUTE	Unmute	静音
+STR_CALL_ADD	Add Call	加入
+STR_CALL_HOLD	Hold	保持
+STR_CALL_KEYPAD	KeyPad	键盘
+STR_CALL_END	End	结束
+STR_CALL_REJECT	Reject	拒接
+STR_CALL_ANSWER	Answer	接听
+STR_PROMPT_DTMF	Dial branch: 	是否拨分机号: 
+
+>image
+ICON_APPLICATION	Phone.bmp
+IMG_DIALER_BG	dialer_bg.gif
+IMG_MUTE	mute.bmp
+IMG_UNMUTE	unmute.bmp
+IMG_SPEAKER_ON	speaker_on.bmp
+IMG_SPEAKER_OFF	speaker_off.bmp
+IMG_CALL_HOLD	hold.bmp
+IMG_CALL_ADD	add.bmp
+IMG_CALL_END	end.bmp
+IMG_CALL_ANSWER	call.bmp
+IMG_PICTURE	pic.bmp
+
+#===================================
+>widget	window	WIN_PANEL
+title	STR_TITLE
+bound	128	160	0	0	128	160
+bound	176	220	0	0	176	220
+bound	220	176	0	0	220	176
+bound	240	320	0	0	240	320
+#bg_image	IMG_DIALER_BG
+
+>widget	listctrl	LIST_DIALER	WIN_PANEL
+bound	128	160	0	40	128	88
+bound	176	220	0	40	176	148
+bound	220	176	0	76	220	68
+bound	240	320	0	76	240	200
+border	none
+
+>widget	listctrl	LIST_OPERATION	WIN_PANEL
+attr	invisible
+bound	128	160	0	0	128	60
+bound	176	220	0	0	176	60
+bound	220	176	0	0	220	60
+bound	240	320	0	0	240	60
+border	frame
+
+#===================================
+>widget	window	WIN_CALL
+bound	128	160	0	0	128	160
+bound	176	220	0	0	176	220
+bound	220	176	0	0	220	176
+bound	240	320	0	0	240	320
+
+#1=========信息区域
+>widget	imagectrl	CTRL_IMAGE	WIN_CALL
+bound	128	160	5	5	40	40
+bound	176	220	5	5	40	40
+bound	220	176	5	5	50	50
+bound	240	320	5	0	50	50
+border	frame
+
+>widget	label	LABEL_NUMBER	WIN_CALL
+bound	128	160	50	5	78	20
+bound	176	220	50	5	126	20
+bound	220	176	60	5	160	20
+bound	240	320	60	5	160	20
+
+>widget	label	LABEL_EVENT	WIN_CALL
+bound	128	160	50	25	68	20
+bound	176	220	50	25	116	20
+bound	220	176	60	25	160	20
+bound	240	320	60	30	160	20
+
+>widget	label	LABEL_DTMF	WIN_CALL
+bound	128	160	5	45	150	20
+bound	176	220	5	45	166	20
+bound	220	176	60	45	160	20
+bound	240	320	60	60	160	20
+
+#2=========按键区域
+
+>widget	button	BTN_MUTE	WIN_CALL
+bound	128	160	5	70	24	50
+bound	176	220	5	70	36	50
+bound	220	176	33	70	36	50
+bound	240	320	5	60	40	60
+title	STR_MUTE	IMG_MUTE
+border	none
+
+>widget	button	BTN_SPEAKER	WIN_CALL
+bound	128	160	34	70	24	50
+bound	176	220	46	70	36	50
+bound	220	176	74	70	36	50
+bound	240	320	50	60	40	60
+title	STR_SPEAKER_ON	IMG_SPEAKER_ON
+border	none
+
+>widget	button	BTN_HOLD	WIN_CALL
+bound	128	160	63	70	24	50
+bound	176	220	87	70	36	50
+bound	220	176	115	70	36	50
+bound	240	320	95	60	40	60
+attr	invisible
+title	STR_CALL_HOLD	IMG_CALL_HOLD
+border	none
+
+>widget	button	BTN_ADD	WIN_CALL
+bound	128	160	92	70	24	50
+bound	176	220	128	70	36	50
+bound	220	176	156	70	36	50
+bound	240	320	140	60	40	60
+attr	invisible
+title	STR_CALL_ADD	IMG_CALL_ADD
+border	none
+
+#3=========
+>widget	button	BTN_ANSWER	WIN_CALL
+bound	128	160	5	130	50	25
+bound	176	220	5	130	75	25
+bound	220	176	5	130	100	25
+bound	240	320	5	120	100	30
+attr	invisible
+#bg_alpha	0xff
+#bg_color	0x0000ff00
+title	STR_CALL_ANSWER	IMG_CALL_ANSWER
+#border	frame
+
+>widget	button	BTN_END	WIN_CALL
+bound	128	160	65	130	50	25
+bound	176	220	85	130	75	25
+bound	220	176	115	130	100	25
+bound	240	320	115	120	100	30
+#bg_alpha	0xff
+#bg_color	0x00ff0000
+title	STR_CALL_END	IMG_CALL_END
+#border	frame

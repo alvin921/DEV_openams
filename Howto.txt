@@ -1,0 +1,51 @@
+[<Template>]
+===========================================================================
+1. Global VOBs目录结构及说明
+	font\		全局字库文件
+	packages\	全局应用
+	widgets\	全局控件
+	projects\	项目目录
+2. 项目目录结构及说明
+	device\		产品外观，用于模拟器
+	font\		本地字库文件，可为空
+	fs\		文件系统，用于模拟器
+	packages\	本地应用，可为空
+	widgets\	本地控件，可为空
+	bootup.txt	启动序列，用于模拟器
+	lang.conf	语言配置文件，其中的字库文件搜索路径首先是本地，然后才是globa VOBs
+	options.txt	本项目编译开关
+	prod.conf	本项目产品配置文件，其中prod_vobs字段标识Global VOBs路径，
+                        项目所选的应用和控件可以是来自本地也可以是来自Global VOBs，记录了modules的完整路径，以便生成FMC
+	resources.zip	项目图片资源包，须解压缩
+
+	
+	Makefile和findmodules.cache是prodgenUI工具动态生成，用于编译
+
+
+
+3. package目录结构
+	brd\
+	incl\
+	srce\
+	vcproj\
+	Makefile
+
+[关于搜索路径]	
+4. resources(images+audio)
+	a) <trd_path>\
+	b) <workdir>\resources\<pack>\
+	c) <workdir>\resources\
+
+===========================================================================
+[How to create new project]
+1. copy <Template>
+
+===========================================================================
+[How to create new application]
+1. VC2005->New->OpenAMS->AmsProject
+	选择<workdir>\localpackages\, 注意不要选择"创建解决方案目录"
+2. 
+===========================================================================
+[How to create new widget]
+1. VC2005->New->OpenAMS->AmsWidget
+	选择<workdir>\localwidgets\, 注意不要选择"创建解决方案目录"

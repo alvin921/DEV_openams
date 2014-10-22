@@ -1,0 +1,33 @@
+>about
+author	alvin
+company	OpenAMS
+version	1.0
+discription	My own style file explorer
+
+>service
+# mime	method	module
+file/*	Locate	0x00
+sys/FileDlg	open	0x80
+
+>string	ENGLISH	SM_CHINESE
+STR_TITLE	Explorer	文件浏览器
+STR_LIST_VIEW	List	列表
+STR_ICON_VIEW	Icon	图标
+
+>image
+ICON_APPLICATION	explorer.bmp
+
+ICON_FOLDER	icon_ext/folder.gif
+ICON_FILE	icon_ext/file.gif
+ICON_EXT_IMAGE	icon_ext/image.bmp
+ICON_EXT_AUDIO	icon_ext/audio.bmp
+ICON_EXT_VIDEO	icon_ext/video.gif
+ICON_EXT_TEXT	icon_ext/text.gif
+
+>widget	window	WIN_MAIN
+title	STR_TITLE
+
+>widget	explorer	DENTRY	WIN_MAIN
+bound	220	176	20	20	200	140
+bound	240	320	20	20	200	200
+

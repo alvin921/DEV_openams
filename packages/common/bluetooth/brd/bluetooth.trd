@@ -1,0 +1,81 @@
+>about
+author	alvin
+company	OpenAMS
+version	1.0
+discription	Sample application of OpenAMS
+
+>service
+#<mime-type>	<method>	<module id>
+
+>string	ENGLISH	SM_CHINESE
+STR_TITLE	Bluetooth	蓝牙
+STR_BT_VISIBLE	Being Visible	可见状态
+STR_BT_SEARCH	Search	搜索设备
+STR_BT_CANCEL_SEARCH	Cancel Search	取消搜索
+STR_BT_INQUIRING	Inquiring	搜索中
+STR_BT_UNPAIRED	Unpaired	未配对
+STR_BT_PAIRING	Pairing	配对中
+STR_BT_PAIR_OK	Pairing OK	配对成功
+STR_BT_PAIR_KO	Pairing Failed	配对失败
+STR_BT_PAIRED	Paired	已配对
+STR_BT_CONNECTING	Connecting	连接中
+STR_BT_CONNECTED	Connected	已连接
+STR_BT_DISCONNECTING	Disonnecting	断开连接中
+STR_BT_DISCONNECTED	Connected	已连接
+STR_BT_ACTIVATED	Activated	已启动
+STR_BT_BOND	Bond	配对
+STR_BT_DEBOND	DeBond	取消配对
+STR_BT_REFRESH_PROF	Refresh	刷新
+STR_BT_CONNECT	Connect	连接
+STR_BT_DISCONNECT	Disonnect	断开连接
+STR_BT_CONNECT_PROMPT	Sure to connect 	确定连接
+STR_BT_DISCONNECT_PROMPT	Sure to disconnect 	确定断开
+
+#[profile]----------------------------------------
+STR_BT_PROF_A2DP	A2DP profile	高级声音播放服务
+STR_BT_PROF_AVRCP	AVRCP profile	影音远程控制服务
+STR_BT_PROF_HFP	Handsfree profile	免持装置服务
+STR_BT_PROF_OPP	OPP profile	对象传输服务
+STR_BT_PROF_FTP	FTP profile	文件传输服务
+STR_BT_PROF_HSP	Headset profile	耳机装置服务
+STR_BT_PROF_SPP	SPP profile	串行端口服务
+STR_BT_PROF_LAP	LAP profile	局域网络服务
+STR_BT_PROF_MAP	MAP profile	消息存取服务
+STR_BT_PROF_DUN	DUN profile	拨号网络服务
+STR_BT_PROF_FAX	Fax profile	传真服务
+STR_BT_PROF_HDP	HDP profile	健康设备服务
+STR_BT_PROF_CTP	CTP profile	无限电话服务
+STR_BT_PROF_ICP	ICP profile	ICP 服务
+STR_BT_PROF_PANP	PAN profile	局域网络服务
+STR_BT_PROF_BIP	BIP profile	图文件对象传输服务
+STR_BT_PROF_BPP	BPP profile	基本打印服务
+STR_BT_PROF_HID	HID profile	远程控制服务
+STR_BT_PROF_SAP	SAP profile	远程SIM卡服务
+STR_BT_PROF_PBAP	PBAP profile	电话簿存取服务
+STR_BT_PROF_UNKNOWN	Unknown profile	未知蓝牙服务
+STR_BT_NO_PROF	No Service	无服务
+STR_PLEASE_WAIT	Please Wait	请稍后
+STR_DONE	Done	完成
+
+>image
+ICON_APPLICATION	icon.bmp
+ICON_BT_AV	OBT_av.gif
+ICON_BT_IMAGING	OBT_imaging.gif
+ICON_BT_COMPUTER	OBT_computer.gif
+ICON_BT_OTHER	OBT_other.gif
+ICON_BT_PHONE	OBT_phone.gif
+
+>widget	window	WIN_MAIN
+title	STR_TITLE
+
+>widget	onoff	ONOFF_POWER	WIN_MAIN
+title	STR_TITLE
+
+>widget	onoff	ONOFF_VISIBLE	WIN_MAIN
+title	STR_BT_VISIBLE
+
+>widget	button	BTN_SEARCH	WIN_MAIN
+title	STR_BT_SEARCH
+
+>widget	listctrl	LIST_DEVICE	WIN_MAIN
+

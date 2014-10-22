@@ -1,0 +1,116 @@
+#ifndef PACK_audioplayer_HI
+#define PACK_audioplayer_HI
+
+
+#include "pack_audioplayer.h"
+#include "audioplayer_resid.h"
+#include "pack_sys.h"
+
+#include "db_audioplayer.h"
+#include "wgt_apbox.h"
+
+#include "wgt_listctrl.h"
+#if defined(FTR_SOFT_KEY)
+#include "wgt_softkey.h"
+#endif
+#include "wgt_editor.h"
+#include "wgt_label.h"
+
+#define PACK_GUID_SELF		PACK_GUID_audioplayer
+
+//2 在filelist第一项显示"返回播放列表"
+#define	FTR_FILELIST_SHOW_BACK_UP____________N
+
+//2 apbox控件在window最底部
+#define	FTR_APBOX_BOTTOM
+
+enum {
+	MOD_ID_FILE_OPEN = MOD_ID_MAIN + 1,
+};
+
+enum {
+	AP_REPEAT_NONE,		//2 顺序播放
+	AP_REPEAT_ALL,			//2  顺序循环播放
+	AP_REPEAT_ONE,		//2  单曲循环
+	AP_REPEAT_SHUFFLE,	//2  随机
+
+	AP_REPEAT_N
+};
+
+enum {
+	AP_VIEW_PLAYLIST,
+	AP_VIEW_FILELIST,
+	AP_VIEW_PLAYER,
+
+	AP_VIEW_N
+};
+
+/*
+1. 全部歌曲
+2. 最近播放
+3. 我的最爱
+4. 默认列表
+N个自定义列表
+5+N 新建列表----打开编辑窗口，输入新列表名
+6+N 导入列表----选择歌曲目录，目录名即为列表名，目录下歌曲自动加入到该列表中
+
+*/
+enum {
+	LIST_ALL,
+	LIST_RECENT,
+
+	LIST_USER,
+	LIST_DEFAULT = LIST_USER,
+	LIST_FAVORATE,
+
+	//2 LIST_USER+N: Add New
+	//2 LIST_USER_N+1: Import
+};
+
+typedef struct {
+	t_AmsModuleId	module;
+	gu8			ap_state;
+	gu16		ap_repeat:2;
+	gu16		ap_shuffle:1;
+	gu16		ap_view:2;
+	gu16		recent_dirt:1;
+	gu16		reserve:10;
+	
+	t_HDataSet		hdb_playlist;
+	t_HDataSet		hdb_filelist;
+
+	int		playlist_cursor;
+	int		filelist_cursor;
+	t_DBRecordID		filelist_rid;
+	
+	int		playing_playlist_cursor;
+	int		playing_filelist_cursor;
+	t_HWindow	player;
+	
+	gu32		duration;
+	gu32		time;
+
+	t_MPlayerSaved mp_recent;
+	//gu16		count[LIST_USER+AP_PLAYLIST_NUM_MAX];
+}audioplayer_glob_t;
+
+enum {
+	RESID_MENU_LSK = RESID_CTRL_DYNAMIC,
+};
+
+extern t_MenuItem miPlaylist[];
+extern t_MenuItem miFilelist[];
+
+BEGIN_DECLARATION
+	
+error_t	audioplayer_MainWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+error_t	audioplayer_FileListWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+error_t	audioplayer_PlaylistWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+error_t	audioplayer_PlayerWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+error_t	audioplayer_DetailWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+error_t	audioplayer_OpenFileWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+void	__ap_view_change(audioplayer_glob_t *glob, t_HWindow win, gu8 back);
+
+END_DECLARATION
+
+#endif

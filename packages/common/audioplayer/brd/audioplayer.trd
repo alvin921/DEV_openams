@@ -1,0 +1,211 @@
+>about
+author	alvin
+company	OpenAMS
+version	1.0
+discription	Sample application of OpenAMS
+
+>service
+#<mime-type>	<method>	<module id>
+file/mp3	open	1
+file/wav	open	1
+file/avi	open	1
+
+>string	ENGLISH	SM_CHINESE
+STR_TITLE	MediaPlayer	播放器
+
+STR_LIST_ALL	All	全部歌曲
+STR_LIST_RECENTS	Recents	最近播放
+STR_LIST_FAVORATES	Favorates	我的最爱
+STR_LIST_DEFAULT	Default	默认列表
+STR_ADD_NEW	Add	添加
+STR_TO_PLAYLIST	To Playlist	返回播放列表
+STR_NEW_PLAYLIST	New Playlist	新建列表
+STR_RENAME_PLAYLIST	Rename Playlist	重命名列表
+STR_IMPORT_PLAYLIST	Import Playlist	目录导入
+STR_DELETE_PLAYLIST	Delete Playlist	删除列表
+STR_CLEANUP_PLAYLIST	Clean Playlist	清空列表
+STR_REMOVE_INVALID_FILES	Remove Invalid Files	清除无效文件
+STR_ADD_FILES	Add Files	添加歌曲
+STR_ADD_DIR	Add Dir	添加目录
+STR_REMOVE_FILE	Remove File	移出列表
+STR_DELETE_FILE	Delete File	删除文件
+STR_CONVERT_FILE	Convert File	转换格式
+STR_PLAY_MODE	Play Mode	播放模式
+STR_PLAY_ONE	Play One	单曲播放
+STR_PLAY_SEQUENCE	Sequence	顺序播放
+STR_PLAY_SHUFFLE	Shuffle	随机播放
+STR_PLAY_REPEAT_ON	Repeat On	循环开
+STR_PLAY_REPEAT_OFF	Repeat Off	循环关
+STR_LOCATE_FILE	Open Containing Dir	打开歌曲目录
+STR_EDIT_FILE_INFO	Edit File Info	修改歌曲信息
+STR_VIEW_DETAIL	View Detail	查看详情
+STR_ADD_TO_PLAYLIST	Add to Playlist	加入播放列表
+
+STR_PLAY_FILE	Play File	播放文件
+STR_PLAYER	Player	播放器
+STR_PLAYLIST	PlayList	播放列表
+STR_PREV_SONG	Prev	上一首
+STR_NEXT_SONG	Next	下一首
+STR_PLAYING_SONG	Playing	正在播放
+
+>image
+ICON_APPLICATION	icon.bmp
+IMG_APBOX_BG	apbox_bg.bmp
+IMG_PREV	btn_prev/hilight.bmp
+IMG_PLAY	btn_play/hilight.bmp
+IMG_PAUSE	btn_pause
+IMG_NEXT	btn_next/hilight.bmp
+IMG_PROGRESS	progress
+IMG_VOLUME	volume
+IMG_REPEAT	repeat
+IMG_UP_DOWN	btn_popup
+IMG_PLAYING	playing
+
+>audio
+
+#===================================================
+>widget	window	WIN_MAIN
+
+>widget	listctrl	LISTCTRL_PLAYLIST	WIN_MAIN
+bound	128	160	0	0	128	84
+bound	176	220	0	0	176	140
+bound	220	176	0	0	220	84
+bound	240	320	0	60	240	244
+bound	240	400	0	60	240	320
+bound	272	480	0	60	272	400
+bound	320	480	0	60	320	400
+border	none
+
+>widget	listctrl	LISTCTRL_FILELIST	WIN_MAIN
+bound	128	160	0	0	128	84
+bound	176	220	0	0	176	140
+bound	220	176	0	0	220	84
+bound	240	320	0	60	240	244
+bound	240	400	0	60	240	320
+bound	272	480	0	60	272	400
+bound	320	480	0	60	320	400
+border	none
+
+>widget	menu	MENU_PLAYLIST	WIN_MAIN
+attr	invisible
+border	frame
+bound	128	160	0	0	100	80
+bound	176	220	0	0	100	80
+bound	220	176	0	0	100	80
+bound	240	320	0	0	100	80
+bound	240	400	0	0	100	80
+bound	272	480	0	0	100	80
+bound	320	480	0	0	100	80
+
+>widget	menu	MENU_FILELIST	WIN_MAIN
+attr	invisible
+border	frame
+bound	128	160	0	0	100	80
+bound	176	220	0	0	100	80
+bound	220	176	0	0	100	80
+bound	240	320	0	0	100	80
+bound	240	400	0	0	100	80
+bound	272	480	0	0	100	80
+bound	320	480	0	0	100	80
+
+>widget	label	LABEL_DETAIL	WIN_MAIN
+bound	128	160	0	0	128	80
+bound	176	220	0	0	176	80
+bound	220	176	0	0	220	80
+bound	240	320	0	0	240	80
+bound	240	400	0	0	240	80
+bound	272	480	0	0	272	80
+bound	320	480	0	0	320	80
+border	frame
+attr	invisible
+
+#===================================================
+>widget	window	WIN_SELECT_PLAYLIST
+title	STR_ADD_TO_PLAYLIST
+
+>widget	listctrl	LISTCTRL_SELECT_PLAYLIST	WIN_SELECT_PLAYLIST
+bound	128	160	0	0	128	128
+bound	176	220	0	0	176	188
+bound	220	176	0	0	220	144
+bound	240	320	0	0	240	200
+bound	240	400	0	0	240	200
+bound	272	480	0	0	272	200
+bound	320	480	0	0	320	200
+border	frame
+
+#===================================================
+>widget	window	WIN_PLAYLIST_NAME
+title	STR_TITLE
+bound	128	160	0	0	128	80
+bound	176	220	0	0	176	80
+bound	220	176	0	80	220	80
+bound	240	320	0	80	240	80
+bound	240	400	0	80	240	80
+bound	272	480	0	80	272	80
+bound	320	480	0	80	320	80
+border	frame
+
+>widget	editor	EDITOR_PLAYLIST	WIN_PLAYLIST_NAME
+bound	128	160	10	20	108	20
+bound	176	220	10	20	156	20
+bound	220	176	10	20	200	20
+bound	240	320	10	20	200	20
+bound	240	400	10	20	240	30
+bound	272	480	10	20	272	30
+bound	320	480	10	20	320	30
+border	frame
+
+#===================================================
+>widget	window	WIN_AUDIO_OPEN
+title	STR_TITLE
+
+>widget	listctrl	LISTCTRL_AUDIO_OPEN	WIN_AUDIO_OPEN
+bound	128	160	0	0	128	128
+bound	176	220	0	0	176	188
+bound	220	176	0	0	220	144
+bound	240	320	0	0	240	274
+bound	240	400	0	0	240	380
+bound	272	480	0	0	272	460
+bound	320	480	0	0	320	460
+border	frame
+
+>widget	editor	EDITOR_NEW_PLAYLIST	WIN_AUDIO_OPEN
+bound	128	160	10	20	128	20
+bound	176	220	10	20	176	20
+bound	220	176	10	20	200	20
+bound	240	320	10	20	200	20
+bound	240	400	10	20	240	20
+bound	272	480	10	20	272	20
+bound	320	480	10	20	320	20
+border	frame
+attr	invisible
+
+#===================================================
+>widget	window	WIN_PLAYER
+title	STR_TITLE
+
+
+>widget	apbox	APBOX_PLAYER	WIN_PLAYER
+bound	128	160	0	0	128	44
+bound	176	220	0	0	176	48
+bound	220	176	0	0	220	60
+bound	240	320	0	0	240	60
+bound	240	400	0	0	240	60
+bound	272	480	0	0	272	60
+bound	320	480	0	0	320	60
+border	frame
+
+>widget	menu	MENU_PLAYER	WIN_PLAYER
+attr	invisible
+border	frame
+bound	128	160	0	0	100	80
+bound	176	220	0	0	100	80
+bound	220	176	0	0	100	80
+bound	240	320	0	0	100	80
+bound	240	400	0	0	100	80
+bound	272	480	0	0	100	80
+bound	320	480	0	0	100	80
+
+#===================================================
+>widget	window	WIN_VIEW_DETAIL
+title	STR_TITLE

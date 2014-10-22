@@ -1,0 +1,23 @@
+#ifndef PACK_simlock_HI
+#define PACK_simlock_HI
+
+
+#include "pack_simlock.h"
+#include "simlock_resid.h"
+#include "pack_sys.h"
+
+
+#define PACK_GUID_SELF		PACK_GUID_simlock
+ 
+typedef struct {
+	gu32 v;
+}t_simlockData;
+
+
+BEGIN_DECLARATION
+	
+error_t	simlock_MainWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+
+END_DECLARATION
+
+#endif

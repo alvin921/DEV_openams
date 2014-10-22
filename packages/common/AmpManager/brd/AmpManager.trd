@@ -1,0 +1,35 @@
+>about
+author	alvin
+company	OpenAMS
+version	1.0
+discription	AMP Manager Application of OpenAMS
+
+>service
+file/amp	open	1
+
+>string	ENGLISH	SM_CHINESE
+STR_TITLE	Download	下载程序
+STR_TITLE_PROD	AmpManager:prod	AMS产品包
+STR_TITLE_PACK	AmpManager:pack	AMS应用
+STR_INSTALL	Install	安装
+STR_UNINSTALL	Uninstall	卸载
+STR_RUN	Run	运行
+STR_BURN	BurnIt	刷机
+
+>image
+ICON_APPLICATION	icon.bmp
+
+>widget	window	WIN_MAIN
+
+>widget	listctrl	LIST_PACK	WIN_MAIN
+
+>widget	menu	MENU_LISTVIEW	WIN_MAIN
+attr	invisible
+
+>widget	menu	MENU_CELLVIEW	WIN_MAIN
+attr	invisible
+
+>widget	window	WIN_PROD
+
+>widget	window	WIN_PACK
+

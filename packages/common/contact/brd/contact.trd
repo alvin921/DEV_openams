@@ -1,0 +1,278 @@
+>about
+author	alvin
+company	OpenAMS
+version	1.0
+discription	This is my first Nokia style demo product
+
+>service
+# mime	method	module
+# app method
+sys/contact	open	1
+#sys/contact	save	2
+# func method
+text/phone	GetName	0x80
+sys/contact	GetInfo	0x81
+sys/contact	QueryInterface	0x82
+
+>string	ENGLISH	SM_CHINESE
+STR_TITLE	Contact	通信录
+STR_SAVE_CONTACT	Save	保存联系人
+STR_EDIT_CONTACT	Edit Contact	编辑联系人
+STR_DEL_CONTACT	Delete Contact	删除联系人
+STR_VIEW_CONTACT	View Contact	联系人详情
+STR_CONTACT_NAME	Name	姓名
+STR_SELECT_PHONE	Select Phone	选择号码
+STR_PROMPT_DEL_CONTACT	Sure to delete this contact?	确定删除此联系人么?
+STR_PROMPT_SAVE_CONTACT	Save this contact?	是否保存联系人?
+STR_PROMPT_NO_NUMBER	No number provided	无电话号码
+
+>image
+ICON_APPLICATION	contact.bmp
+
+#===========================================
+>widget	window	WIN_DETAIL
+title	STR_VIEW_CONTACT
+
+
+>widget	menu	MENU_OPTION	WIN_DETAIL
+attr	invisible
+border	frame
+
+>widget	label	LABEL_NAME	WIN_DETAIL
+title	STR_CONTACT_NAME
+bound	128	160	0	0	128	18
+bound	176	220	0	0	176	18
+bound	220	176	0	0	220	18
+bound	240	320	0	0	240	20
+bound	240	400	0	0	240	20
+bound	272	480	0	0	272	20
+bound	320	480	0	0	320	20
+
+>widget	label	LABEL_OFFICE	WIN_DETAIL
+title	STR_NUMBER_OFFICE
+bound	128	160	0	20	128	18
+bound	176	220	0	20	176	18
+bound	220	176	0	20	220	18
+bound	240	320	0	20	240	20
+bound	240	400	0	20	240	20
+bound	272	480	0	20	272	20
+bound	320	480	0	20	320	20
+
+>widget	label	LABEL_HOME	WIN_DETAIL
+title	STR_NUMBER_HOME
+bound	128	160	0	40	128	18
+bound	176	220	0	40	176	18
+bound	220	176	0	40	220	18
+bound	240	320	0	40	240	20
+bound	240	400	0	40	240	20
+bound	272	480	0	40	272	20
+bound	320	480	0	40	320	20
+
+>widget	label	LABEL_MOBILE	WIN_DETAIL
+title	STR_NUMBER_MOBILE
+bound	128	160	0	60	128	18
+bound	176	220	0	60	176	18
+bound	220	176	0	60	220	18
+bound	240	320	0	60	240	20
+bound	240	400	0	60	240	20
+bound	272	480	0	60	272	20
+bound	320	480	0	60	320	20
+
+>widget	label	LABEL_FAX	WIN_DETAIL
+title	STR_NUMBER_FAX
+bound	128	160	0	80	128	18
+bound	176	220	0	80	176	18
+bound	220	176	0	80	220	18
+bound	240	320	0	80	240	20
+bound	240	400	0	80	240	20
+bound	272	480	0	80	272	20
+bound	320	480	0	80	320	20
+
+>widget	label	LABEL_OTHER	WIN_DETAIL
+title	STR_NUMBER_OTHER
+bound	128	160	0	100	128	18
+bound	176	220	0	100	176	18
+bound	220	176	0	100	220	18
+bound	240	320	0	100	240	20
+bound	240	400	0	100	240	20
+bound	272	480	0	100	272	20
+bound	320	480	0	100	320	20
+
+>widget	label	LABEL_RING	WIN_DETAIL
+title	STR_RING
+bound	128	160	0	120	128	18
+bound	176	220	0	120	176	18
+bound	220	176	0	120	220	18
+bound	240	320	0	120	240	20
+bound	240	400	0	120	240	20
+bound	272	480	0	120	272	20
+bound	320	480	0	120	320	20
+
+>widget	label	LABEL_PICTURE	WIN_DETAIL
+title	STR_PICTURE
+bound	128	160	0	140	128	18
+bound	176	220	0	140	176	18
+bound	220	176	0	140	220	18
+bound	240	320	0	140	240	20
+bound	240	400	0	140	240	20
+bound	272	480	0	140	272	20
+bound	320	480	0	140	320	20
+
+>widget	label	LABEL_GROUP	WIN_DETAIL
+title	STR_GROUP
+bound	128	160	0	160	128	18
+bound	176	220	0	160	176	18
+bound	220	176	0	160	220	18
+bound	240	320	0	160	240	20
+bound	240	400	0	160	240	20
+bound	272	480	0	160	272	20
+bound	320	480	0	160	320	20
+
+>widget	label	LABEL_EMAIL	WIN_DETAIL
+title	STR_EMAIL
+bound	128	160	0	180	128	18
+bound	176	220	0	180	176	18
+bound	220	176	0	180	220	18
+bound	240	320	0	180	240	20
+bound	240	400	0	180	240	20
+bound	272	480	0	180	272	20
+bound	320	480	0	180	320	20
+
+>widget	label	LABEL_ADDRESS	WIN_DETAIL
+title	STR_ADDRESS
+bound	128	160	0	200	128	18
+bound	176	220	0	200	176	18
+bound	220	176	0	200	220	18
+bound	240	320	0	200	240	20
+bound	240	400	0	200	240	20
+bound	272	480	0	200	272	20
+bound	320	480	0	200	320	20
+
+#===========================================
+>widget	window	WIN_EDIT_CONTACT
+title	STR_EDIT_CONTACT
+
+>widget	editor	EDITOR_NAME	WIN_EDIT_CONTACT
+title	STR_CONTACT_NAME
+bound	128	160	0	0	128	18
+bound	176	220	0	0	176	18
+bound	220	176	0	0	220	18
+bound	240	320	0	0	240	20
+bound	240	400	0	0	240	20
+bound	272	480	0	0	272	20
+bound	320	480	0	0	320	20
+
+>widget	editor	EDITOR_OFFICE	WIN_EDIT_CONTACT
+title	STR_NUMBER_OFFICE
+bound	128	160	0	20	128	18
+bound	176	220	0	20	176	18
+bound	220	176	0	20	220	18
+bound	240	320	0	20	240	20
+bound	240	400	0	20	240	20
+bound	272	480	0	20	272	20
+bound	320	480	0	20	320	20
+
+>widget	editor	EDITOR_HOME	WIN_EDIT_CONTACT
+title	STR_NUMBER_HOME
+bound	128	160	0	40	128	18
+bound	176	220	0	40	176	18
+bound	220	176	0	40	220	18
+bound	240	320	0	40	240	20
+bound	240	400	0	40	240	20
+bound	272	480	0	40	272	20
+bound	320	480	0	40	320	20
+
+>widget	editor	EDITOR_MOBILE	WIN_EDIT_CONTACT
+title	STR_NUMBER_MOBILE
+bound	128	160	0	60	128	18
+bound	176	220	0	60	176	18
+bound	220	176	0	60	220	18
+bound	240	320	0	60	240	20
+bound	240	400	0	60	240	20
+bound	272	480	0	60	272	20
+bound	320	480	0	60	320	20
+
+>widget	editor	EDITOR_FAX	WIN_EDIT_CONTACT
+title	STR_NUMBER_FAX
+bound	128	160	0	80	128	18
+bound	176	220	0	80	176	18
+bound	220	176	0	80	220	18
+bound	240	320	0	80	240	20
+bound	240	400	0	80	240	20
+bound	272	480	0	80	272	20
+bound	320	480	0	80	320	20
+
+>widget	editor	EDITOR_OTHER	WIN_EDIT_CONTACT
+title	STR_NUMBER_OTHER
+bound	128	160	0	100	128	18
+bound	176	220	0	100	176	18
+bound	220	176	0	100	220	18
+bound	240	320	0	100	240	20
+bound	240	400	0	100	240	20
+bound	272	480	0	100	272	20
+bound	320	480	0	100	320	20
+
+>widget	editor	EDITOR_RING	WIN_EDIT_CONTACT
+title	STR_RING
+bound	128	160	0	120	128	18
+bound	176	220	0	120	176	18
+bound	220	176	0	120	220	18
+bound	240	320	0	120	240	20
+bound	240	400	0	120	240	20
+bound	272	480	0	120	272	20
+bound	320	480	0	120	320	20
+
+>widget	editor	EDITOR_PICTURE	WIN_EDIT_CONTACT
+title	STR_PICTURE
+bound	128	160	0	140	128	18
+bound	176	220	0	140	176	18
+bound	220	176	0	140	220	18
+bound	240	320	0	140	240	20
+bound	240	400	0	140	240	20
+bound	272	480	0	140	272	20
+bound	320	480	0	140	320	20
+
+>widget	editor	EDITOR_GROUP	WIN_EDIT_CONTACT
+title	STR_GROUP
+bound	128	160	0	160	128	18
+bound	176	220	0	160	176	18
+bound	220	176	0	160	220	18
+bound	240	320	0	160	240	20
+bound	240	400	0	160	240	20
+bound	272	480	0	160	272	20
+bound	320	480	0	160	320	20
+
+>widget	editor	EDITOR_EMAIL	WIN_EDIT_CONTACT
+title	STR_EMAIL
+bound	128	160	0	180	128	18
+bound	176	220	0	180	176	18
+bound	220	176	0	180	220	18
+bound	240	320	0	180	240	20
+bound	240	400	0	180	240	20
+bound	272	480	0	180	272	20
+bound	320	480	0	180	320	20
+
+>widget	editor	EDITOR_ADDRESS	WIN_EDIT_CONTACT
+title	STR_ADDRESS
+bound	128	160	0	200	128	18
+bound	176	220	0	200	176	18
+bound	220	176	0	200	220	18
+bound	240	320	0	200	240	20
+bound	240	400	0	200	240	20
+bound	272	480	0	200	272	20
+bound	320	480	0	200	320	20
+
+#==============================================
+>widget	window	WIN_SETTING
+title	STR_SETTING
+
+>widget	window	WIN_SELECT_PHONE
+title	STR_SELECT_PHONE
+>widget	listctrl	LIST_PHONE	WIN_SELECT_PHONE
+bound	128	160	0	20	128	100
+bound	176	220	0	20	176	100
+bound	220	176	0	20	220	100
+bound	240	320	0	20	240	100
+bound	240	400	0	20	240	100
+bound	272	480	0	20	272	100
+bound	320	480	0	20	320	100

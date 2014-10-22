@@ -1,0 +1,40 @@
+#ifndef PACK_sys_HI
+#define PACK_sys_HI
+
+#include "pack_sys.h"
+#include "sys_resid.h"
+
+
+#include "wgt_listctrl.h"
+#include "wgt_menu.h"
+#if defined(FTR_SOFT_KEY)
+#if defined(FTR_SOFT_KEY)
+#include "wgt_softkey.h"
+#endif
+#endif
+#include "wgt_label.h"
+#include "wgt_editor.h"
+
+#define PACK_GUID_SELF		PACK_GUID_sys
+
+enum {
+	MOD_ID_SYS = MOD_ID_MAIN,
+	MOD_ID_SYS_TSCALIB,
+	
+	MOD_ID_SYS_MESSAGEBOX = MOD_ID_FUNC,
+	MOD_ID_SYS_PLMN,
+	MOD_ID_SYS_METHODDLG,
+};
+
+BEGIN_DECLARATION
+
+error_t 	MessageBox_Handler(t_sparam sparam, t_lparam lparam);
+error_t 	MethodDlg_Handler(t_sparam sparam, t_lparam lparam);
+//2 <sparam>=0, check & start calib if not calibrated
+//2 <sparam>=1, force to start calib
+error_t 		TSCalibAppMsgHandler(t_sparam sparam, t_lparam lparam);
+
+END_DECLARATION
+
+#endif
+

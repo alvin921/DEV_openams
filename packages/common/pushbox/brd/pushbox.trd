@@ -1,0 +1,34 @@
+>about
+author	alvin
+company	OpenAMS
+version	1.0
+discription	Game: pushbox
+
+>string	ENGLISH	SM_CHINESE
+STR_TITLE	PushBox	推箱子
+STR_ITEM_HELP	Help	帮助
+STR_STAGE	Stage	关卡
+STR_ACTION	Action	移动
+STR_REPLAY	Replay	重玩
+STR_PROMPT_CHANGE	Are you sure to give up this stage?	确定放弃本关么?
+STR_PROMPT_REPLAY	Are you sure to replay this stage?	确定重玩本关么?
+STR_PROMPT_QUIT	Are you sure to quit?	确定退出并应用么?
+STR_PROMPT_DEMO	Are you sure to show the answer?	确定要查看答案么?
+STR_PROMPT_DEMODONE	Done! Clear? Cheer up & try again!	答案演示完毕, 加油!
+STR_PROMPT_DONE	Congratutation! Good job!	恭喜你完成本关!
+STR_PREVIOUS_STAGE	Previous Stage	上一关
+STR_NEXT_STAGE	Next Stage	下一关
+STR_UNDO	Undo	撤销
+STR_REDO	Redo	重做
+STR_DEMO	Answer Demo	答案演示
+
+>image
+ICON_APPLICATION	SmartSoko.bmp
+IMG_PANE	roles.bmp
+
+>widget	window	WIN_MAIN
+title	STR_TITLE
+
+>widget	menu	MENU_OPTION	WIN_MAIN
+attr	invisible
+

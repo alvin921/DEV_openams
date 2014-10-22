@@ -1,0 +1,12 @@
+cause = onkey	# onkey|charger|alarm|exception
+sirq = sim in 0
+sirq = sim in 1
+sirq = sim in 2
+sirq = sim in 3
+sirq = net searching 0
+sirq = net searching 1
+delay = 100
+sirq = net 46000 0
+sirq = net 46001 1
+sirq = battery 60 3800
+sirq = rssi 16 0

@@ -1,0 +1,45 @@
+EXPORTS
+	class_listctrl DATA
+	listctrl_attach
+	listctrl_set_count
+	listctrl_get_count
+	listctrl_set_flags
+	listctrl_get_flags
+	listctrl_set_rows
+	listctrl_set_cols
+	listctrl_set_item_margin
+	listctrl_set_viewtype
+	listctrl_get_viewtype
+	listctrl_get_style
+	listctrl_set_style
+	listctrl_get_cursor 
+	listctrl_set_cursor
+
+	listctrl_set_select
+	listctrl_get_num_select
+	listctrl_enum_select
+	
+	listctrl_index_by_point
+	listctrl_rect_by_index
+	listctrl_next
+	listctrl_attach_db
+	listctrl_attach_datasource
+	listctrl_get_datasource
+	listctrl_refresh_datasource
+	listctrl_show_item_in
+	listctrl_redraw_item
+	gdi_draw_mime_method
+
+	class_DSIconText DATA
+	IconTextItem_SetText
+	IconTextItem_SetImage
+		
+	DSIconText_NewItem
+	DSIconText_DeleteItem
+	DSIconText_DeleteAll
+	DSIconText_SetItemText
+	DSIconText_SetItemID
+	DSIconText_GetItemID
+	DSIconText_SetItemImage
+	DSIconText_GetItem
+	DSIconText_SetAlign

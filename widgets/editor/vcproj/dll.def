@@ -1,0 +1,18 @@
+EXPORTS
+	class_editor DATA
+	editor_set_type
+	editor_set_nchar_max
+	editor_get_utext
+	editor_set_utext
+	editor_get_nchars
+	editor_set_nbytes_max
+	editor_get_text
+	editor_get_text_dup
+	editor_set_text
+	editor_set_cursor
+	editor_set_sel
+	editor_add_char
+	editor_set_flags
+	editor_set_line_height
+	editor_get_line_height
+	

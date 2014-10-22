@@ -1,0 +1,28 @@
+#ifndef PACK_notepad_HI
+#define PACK_notepad_HI
+
+
+#include "pack_notepad.h"
+#include "notepad_resid.h"
+
+#include "wgt_listctrl.h"
+#include "wgt_menu.h"
+#if defined(FTR_SOFT_KEY)
+#include "wgt_softkey.h"
+#endif
+#include "wgt_label.h"
+
+#define	PACK_GUID_SELF	PACK_GUID_notepad
+
+typedef struct {
+	gu32		v;
+}t_Global;
+
+
+BEGIN_DECLARATION
+	
+error_t	notepad_MainWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+
+END_DECLARATION
+
+#endif

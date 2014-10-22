@@ -1,0 +1,12 @@
+>string	ENGLISH	SM_CHINESE
+STR_TITLE	MainMenu	Ö÷²Ëµ¥
+
+>image
+ICON_APPLICATION	mainmenu.bmp
+
+>widget	window	WIN_MAIN
+
+>widget	listctrl	LIST_MAINMENU	WIN_MAIN
+bound	220	176	0	0	220	144
+bound	240	320	0	0	240	240
+border	none

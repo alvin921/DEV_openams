@@ -1,0 +1,5 @@
+EXPORTS
+	;class_panel DATA
+	panel_get_member
+	panel_set_member
+	

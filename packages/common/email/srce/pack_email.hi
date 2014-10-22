@@ -1,0 +1,73 @@
+#ifndef PACK_email_HI
+#define PACK_email_HI
+
+
+#include "pack_email.h"
+#include "email_resid.h"
+#include "pack_sys.h"
+#include "email_user.h"
+#include "email_db.h"
+#include "email_decode.h"
+
+#include "wgt_softkey.h"
+#include "wgt_editor.h"
+
+#include "pop3.h"
+#include "..\\RFC822\\RFC822.h"
+#include "..\\RFC822\\RFC2047.h"
+
+#define PACK_GUID_SELF		PACK_GUID_email
+
+enum{
+	EMAIL_SUCCESS = SUCCESS,
+
+	EMAIL_E_SYNTAX = ERROR_SOFT_USER,
+	EMAIL_E_CORRUPT,
+};
+
+
+
+typedef struct {
+	int		index;
+	char		*uidl;
+}t_EmailUidl;
+
+typedef struct {
+	int 	count;
+	t_EmailUidl *uidl_list;
+	int	parse_index;
+	int	parse_step;
+	t_EmailHeader head;
+	gu32	rxsize;		//2 邮件已接收大小
+	t_DBRecordID		mailid;
+	gu16	block;
+	gu8	buf[EMAIL_BLOCK_SIZE];
+	int	buflen;		//2 缓冲区中更有效数据大小
+	int	parsed_head_len;
+}t_RecvMail;
+
+typedef struct {
+	t_EmailUser * user;
+	t_HDataSet	hds_head;
+	t_HDataSet	hds_cont;
+	t_HDataSet	hds_uidl;
+
+	t_RecvMail	mail;
+
+	int		view_index;
+
+	t_EmailBody body;
+}email_glob_t;
+
+
+
+
+BEGIN_DECLARATION
+	
+error_t	email_MainWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+error_t	email_ViewWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+error_t	email_UserProfileWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+
+END_DECLARATION
+
+#endif

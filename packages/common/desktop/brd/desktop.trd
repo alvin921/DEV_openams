@@ -1,0 +1,24 @@
+>string	ENGLISH	SM_CHINESE
+STR_TITLE	Desktop	桌面
+STR_PROMPT_POWEROFF	Sure to switch off?	确定关机?
+
+>image
+ICON_APPLICATION	desktop.bmp
+IMG_POWEROFF	poweroff.bmp
+
+>widget	window	WIN_MAIN
+>widget	listctrl	LIST_SHORTCUT	WIN_MAIN
+bound	128	160	6	2	120	30
+bound	176	220	20	2	150	30
+bound	220	176	36	2	180	30
+bound	240	320	12	2	228	38
+bound	320	240	80	2	240	40
+border	none
+
+>widget	listctrl	LIST_TODAY	WIN_MAIN
+bound	128	160	6	35	120	80
+bound	176	220	20	35	150	100
+bound	220	176	36	40	180	100
+bound	240	320	12	40	228	180
+bound	320	240	60	45	250	100
+border	none

@@ -1,0 +1,26 @@
+#ifndef PACK_desktop_HI
+#define PACK_desktop_HI
+
+#include "pack_desktop.h"
+#include "desktop_resid.h"
+#include "pack_sys.h"
+
+#include "wgt_listctrl.h"
+#include "wgt_menu.h"
+#include "wgt_softkey.h"
+#include "wgt_label.h"
+
+#define	PACK_GUID_SELF	PACK_GUID_desktop
+
+
+typedef struct {
+	gu32		data;
+}t_DesktopGlobData;
+
+BEGIN_DECLARATION
+
+error_t	desktop_MainWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+
+END_DECLARATION
+
+#endif

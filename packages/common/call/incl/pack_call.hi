@@ -1,0 +1,58 @@
+#ifndef PACK_call_HI
+#define PACK_call_HI
+
+
+#include "pack_call.h"
+#include "call_resid.h"
+#include "pack_sys.h"
+
+#include "wgt_listctrl.h"
+#include "wgt_menu.h"
+#include "wgt_softkey.h"
+#include "wgt_label.h"
+
+#define	PACK_GUID_SELF	PACK_GUID_call
+
+enum {
+	MOD_CALL_DIALER = MOD_ID_MAIN,
+	MOD_CALL_INCOMING,
+	MOD_CALL_SEND,
+	MOD_CALL_IPSEND,
+};
+
+
+typedef struct {
+	t_MimeMethodInfo		ms_phone[16];
+	int			n_ms_phone;
+	
+	char		strPhone[CONTACT_NUMBER_MAX+1];
+	int		len;
+}call_glob_t;
+
+#define CALL_MS_MAX	8
+typedef struct {
+	t_MimeMethodInfo		ms_phone[CALL_MS_MAX];
+	t_ContactMSInterface	vtbl[CALL_MS_MAX];
+	int		count[CALL_MS_MAX];
+	int			n_ms_phone;
+
+	int		total_count;
+	
+	char		strPhone[CONTACT_NUMBER_MAX+1];
+	int		len;
+}t_PanelWndData;
+
+extern const resid_t gaCallEvtResid[CALL_EVT_MAX];
+
+BEGIN_DECLARATION
+
+
+error_t	call_PanelWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+//2 <sparam>=<call_id>, <lparam>=<t_CSessionID>
+error_t	call_WndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+t_HWindow	call_LoadOutgoing(gu8 sim, const char *phone, t_CSessionID sid);
+t_HWindow	call_LoadIncoming(int cid);
+
+END_DECLARATION
+
+#endif

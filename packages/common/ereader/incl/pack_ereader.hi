@@ -1,0 +1,29 @@
+#ifndef PACK_ereader_HI
+#define PACK_ereader_HI
+
+
+#include "pack_ereader.h"
+#include "ereader_resid.h"
+
+#include "wgt_listctrl.h"
+#include "wgt_menu.h"
+#if defined(FTR_SOFT_KEY)
+#include "wgt_softkey.h"
+#endif
+#include "wgt_label.h"
+
+#define	PACK_GUID_SELF	PACK_GUID_ereader
+
+
+typedef struct {
+	gu32		v;
+}t_Global;
+
+
+BEGIN_DECLARATION
+	
+error_t	ereader_MainWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+
+END_DECLARATION
+
+#endif

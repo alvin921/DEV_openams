@@ -1,0 +1,7 @@
+EXPORTS
+	class_label DATA
+	label_set_text
+	label_set_text_by_resid
+	label_get_text
+	label_insert_text
+	

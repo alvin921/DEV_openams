@@ -1,0 +1,61 @@
+一个简单的eMail Demo须完成如下功能：
+1. 用户信息，包含名称、邮箱名、收件服务器（主机名、用户名、密码）、发件服务器
+2. 收取邮件
+3. 发送邮件
+4. 邮件存储
+【用户信息】
+文件存储userpass
+
+
+【邮件存储分析】
+邮件分为head和content，head中包含content类型和大小，还有时间、路由、收发件人、主题等信息，我们将head和content分为两个单独的table进行存储
+TabHeader规格如下：
+U16	MailID
+	邮件ID，也就是TabHeader记录号，用于跟TabContent做索引
+U8	FolderID
+	文件夹ID，也就是TabFolder记录号，用于索引文件夹，demo暂时只支持收件箱浏览
+U8	Flag
+	邮件标识，比如未读、高优先级等
+U16	body_offset
+	邮件body偏移量
+U32	MailSize
+	邮件大小
+U32	RecvSize
+	已接收大小，用于断点续传
+U32	SentDateTime
+U32	RecvDateTime
+char	MailUIDL[]
+char	ContType[]
+char	Subject[]
+char	From[]
+char	To[]
+char	Cc[]	
+char	Bcc[]
+char	ReplyTo[]
+	如果指定了ReplyTo则reply时使用该邮箱，否则使用From
+==================================================================
+邮件内容大小完全不能预知，可能会很大，如果要作为一个字段完整保存下来，必须申请一块很大内存，收完所有数据，然后存储，在功能机上很可能申请不到大内存，因此有必要将邮件内容分块存储，这样可以边接收边存储
+
+TabContent规格如下:
+U16	MailID
+	TabHeader索引
+U16	BlockID
+	邮件内容分块顺序号，每个block为2K，那么最大可表示128M邮件内容，足够满足需求
+U8	Content[2048]
+
+【收取邮件】
+单独运行一个后台线程，只有一个任务，就是等待MMI消息收取邮件
+邮件收取流程
+1. pop3_connect(host, 110), 连接pop3服务器
+2. pop3_user(user), 发送USER指令
+3. pop3_pass(pass), 发送PASS指令，用户身份验证
+4. pop3_stat(&count), 发送STAT指令，获取邮件总数
+5. pop3_uidl(uidl, &count), 发送UIDL指令，获取所有邮件uidl列表uidl_list1
+6. 查询获取本地所有邮件uidl列表uidl_list2，两相对比，将相同的uidl项删除，将uidl_list2剩余项记录删掉
+7. 对uidl_list1中每一项执行如下操作
+	7.1. pop3_list(index, &size) 获取邮件大小
+	7.2. pop3_retr(index, &info) 获取邮件信息，边收边解析出head和body
+	创建head记录，收取邮件到block[2048]缓冲区中，没收满一个block就存入到content记录中，同时解析head，记录下head中各项信息（如content-type/subject/from/to）和body_offset等
+	7.3. uidl项存入uidl数据库
+
+

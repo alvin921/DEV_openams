@@ -1,0 +1,18 @@
+>about
+author	alvin
+company	OpenAMS
+version	1.0
+discription	Sample application of OpenAMS
+
+>service
+#<mime-type>	<method>	<module id>
+
+>string	ENGLISH	SM_CHINESE
+STR_TITLE	Sample	²âÊÔ³ÌÐò
+
+>image
+ICON_APPLICATION	icon.bmp
+
+>widget	window	WIN_MAIN
+title	STR_TITLE
+

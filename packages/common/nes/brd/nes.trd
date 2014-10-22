@@ -1,0 +1,17 @@
+>about
+author	alvin
+company	OpenAMS
+version	1.0
+discription	NES Simulator of OpenAMS
+
+>service
+file/nes	open	0
+
+>string	ENGLISH	SM_CHINESE
+STR_TITLE	NES Simulator	任天堂
+STR_FILE_FORMAT	File Format Error	文件格式有误
+
+>image
+ICON_APPLICATION	icon.bmp
+
+

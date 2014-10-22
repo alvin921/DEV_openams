@@ -1,0 +1,203 @@
+>about
+author	alvin
+company	OpenAMS
+version	1.0
+discription	dialer & call for E66
+
+>service
+# Incoming call
+sys/call	open	1
+# Outgoing call
+sys/contact	send	2
+
+>string	ENGLISH	SM_CHINESE
+STR_TITLE	Call	电话
+STR_DIAL	Dial	拨号
+STR_IP_DIAL	IP Dial	IP拨号
+STR_OUTGOING	Outgoing	呼出
+STR_INCOMING	Incoming	呼入
+STR_CONNECT	Connected	呼叫已连接
+STR_DISCONNECT	Disconnected	通话结束
+STR_WAITING	Call Waiting	对方呼叫等待
+STR_ONHELD	Call Onheld	对方保持呼叫
+STR_RESUMED	Call Resumed	对方恢复呼叫
+STR_IN_MPTY	In MPTY	多方通话
+STR_AUDIO_ON	Audio On	语音通道开启
+STR_AUDIO_OFF	Audio Off	语音通道关闭
+STR_USER_SUSPENDED	User Suspended	网络挂起呼叫
+STR_USER_RESUMED	User Resumed	网络恢复呼叫
+STR_BARRING_ALL	Barring All	禁止所有电话
+STR_I_FORWARDED_CALL	Forwared Call Incoming	被转移的来电
+STR_I_FORWARDED	Incoming Forwarded	来电被转移
+STR_I_BARRING	Barring	禁接来电
+STR_I_BARRING_ALL	Barring All Incoming Calls	禁接所有来电
+STR_I_BARRING_ROAMING	Barring Incomings When Roaming	漫游时禁接来电
+STR_O_PROCEED	Outgoing Proceeded	呼叫中
+STR_O_ALERT	Outgoing Alert	正在呼叫...
+STR_O_FORWARED	Outgoing Forwarded	呼叫被转移
+STR_O_BARRING	Outgoing Barring	禁拨当前电话
+STR_O_BARRING_ALL	Outgoing Barring All	禁拨所有电话
+STR_O_BARRING_INTERNATION	Outgoing Barring INT	禁拨国际电话
+STR_O_BARRING_INT_EXCEPT_HONE	Barring INT Except Home	禁拨国外电话
+
+STR_FORWARDING_ALL	Forwarding All	所有通话被转移
+STR_ALL_COND_FORWARDING	All Cond. Forwarding	条件转移已开启
+STR_FORWARDING_ON_BUSY	Forwarding On Busy	遇忙转移
+STR_FORWARDING_ON_NOREPLY	Forwarding On Noreply	无应答转移
+STR_FORWARDING_ON_UNREACHABLE	Forwarding On Unreachable	联络不到转移
+
+STR_SPEAKER_ON	SpkOn	免提
+STR_SPEAKER_OFF	SpkOff	听筒
+STR_MUTE	Mute	静音
+STR_UNMUTE	Unmute	静音
+STR_CALL_ADD	Add Call	加入
+STR_CALL_HOLD	Hold	保持
+STR_CALL_KEYPAD	KeyPad	键盘
+STR_CALL_END	End	结束
+STR_CALL_REJECT	Reject	拒接
+STR_CALL_ANSWER	Answer	接听
+STR_PROMPT_DTMF	Dial branch: 	是否拨分机号: 
+
+STR_PANEL_FAVORATES	Favorates	收藏
+STR_PANEL_CALLLOG	CallLog	最近通话
+STR_PANEL_CONTACT	Contacts	通讯录
+STR_PANEL_DIALER	Dialer	拨号键盘
+STR_PANEL_VMAIL	VoiceMail	语音信箱
+STR_HIDE_KEYPAD	HideKeyPad	隐藏拨号键盘
+
+
+>image
+ICON_APPLICATION	Phone.bmp
+IMG_DIALER_BG	dialer_bg.gif
+IMG_MUTE	mute.bmp
+IMG_UNMUTE	unmute.bmp
+IMG_SPEAKER_ON	speaker_on.bmp
+IMG_SPEAKER_OFF	speaker_off.bmp
+IMG_CALL_HOLD	hold.bmp
+IMG_CALL_ADD	add.bmp
+IMG_CALL_END	end.bmp
+IMG_CALL_ANSWER	call.bmp
+IMG_CONTACT	contact
+IMG_RECENT	recent
+IMG_FAVORATE	favorate
+IMG_DIALER	dialer
+IMG_PAD	pad.bmp
+
+#===================================
+>widget	window	WIN_MAIN
+bound	220	176	0	0	220	176
+bound	240	320	0	0	240	320
+bound	240	400	0	0	240	400
+bound	272	480	0	0	272	480
+bound	320	480	0	0	320	480
+bg_color	0xff000000
+#bg_image	IMG_DIALER_BG
+
+>widget	tabctrl	TABCTRL_MAIN	WIN_MAIN
+bound	220	176	0	0	220	144
+bound	240	320	0	0	240	304
+bound	240	400	0	0	240	380
+bound	272	480	0	0	272	460
+bound	320	480	0	0	320	460
+bg_color	0xffc0c0c0
+
+#==============【1. 收藏】====================
+>widget	panel	PANEL_FAVORATES	TABCTRL_MAIN
+title	STR_PANEL_FAVORATES	IMG_FAVORATE
+border	none
+
+#==============【2. 最近通话】====================
+>widget	calllog	PANEL_CALLLOG	TABCTRL_MAIN
+title	STR_PANEL_CALLLOG	IMG_RECENT
+border	none
+
+#==============【3. 通讯录】====================
+>widget	contact	PANEL_CONTACT	TABCTRL_MAIN
+title	STR_PANEL_CONTACT	IMG_CONTACT
+border	none
+
+#==============【4. 拨号键盘】====================
+>widget	panel	PANEL_DIALER	TABCTRL_MAIN
+title	STR_PANEL_DIALER	IMG_DIALER
+bg_image	IMG_PAD
+border	none
+
+#===================================
+>widget	window	WIN_PANEL
+title	STR_TITLE
+bound	220	176	0	0	220	176
+bound	240	320	0	0	240	320
+bound	240	400	0	0	240	400
+bound	272	480	0	0	272	480
+bound	320	480	0	0	320	480
+#bg_image	IMG_DIALER_BG
+
+>widget	listctrl	LIST_DIALER	WIN_PANEL
+bound	220	176	0	76	220	68
+bound	240	320	0	76	240	200
+bound	240	400	0	76	240	280
+bound	272	480	0	76	272	360
+bound	320	480	0	76	320	360
+border	none
+
+>widget	listctrl	LIST_OPERATION	WIN_PANEL
+attr	invisible
+bound	220	176	0	0	220	60
+bound	240	320	0	0	240	60
+bound	240	400	0	0	240	80
+bound	272	480	0	0	272	80
+bound	320	480	0	0	320	80
+border	frame
+
+#==================================
+#【CALL incoming】
+>widget	window	WIN_CALL_MT
+bound	240	320	0	0	240	320
+bound	240	400	0	0	240	400
+bound	272	480	0	0	272	480
+bound	320	480	0	0	320	480
+
+>widget	panel	PANEL_CALL_MT	WIN_CALL_MT
+bound	240	320	0	244	240	60
+bound	240	400	0	300	240	80
+bound	272	480	0	380	272	80
+bound	320	480	0	380	320	80
+bg_color	0xc0234156
+
+>widget	button	BTN_END_MO	PANEL_CALL_MT
+bound	240	320	15	15	100	30
+bound	240	400	15	15	100	30
+bound	272	480	15	15	100	30
+bound	320	480	15	15	100	30
+title	STR_CALL_END	IMG_CALL_END
+
+>widget	button	BTN_ANSWER	PANEL_CALL_MT
+bound	240	320	125	15	100	30
+bound	240	400	125	15	100	30
+bound	272	480	125	15	100	30
+bound	320	480	125	15	100	30
+title	STR_CALL_ANSWER	IMG_CALL_ANSWER
+
+#==================================
+#【CALL outgoing/incall】
+>widget	window	WIN_CALL
+bound	240	320	0	0	240	320
+bound	240	400	0	0	240	400
+bound	272	480	0	0	272	480
+bound	320	480	0	0	320	480
+
+>widget	button	BTN_END	WIN_CALL
+bound	240	320	15	260	210	30
+bound	240	400	15	335	210	30
+bound	272	480	15	410	210	30
+bound	320	480	15	410	210	30
+title	STR_CALL_END	IMG_CALL_END
+
+>widget	button	BTN_HIDE_KEYPAD	WIN_CALL
+bound	240	320	125	260	100	30
+bound	240	400	125	335	100	30
+bound	272	480	125	415	100	30
+bound	320	480	125	415	100	30
+attr	invisible
+title	STR_HIDE_KEYPAD
+#border	frame

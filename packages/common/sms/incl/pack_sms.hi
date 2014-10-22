@@ -1,0 +1,75 @@
+#ifndef PACK_sms_HI
+#define PACK_sms_HI
+
+
+#include "pack_sms.h"
+#include "sms_resid.h"
+#if defined(FTR_SOFT_KEY)
+#include "wgt_softkey.h"
+#endif
+
+#if (LCD_WIDTH < 240)
+#define	SMALL_LCD
+#endif
+
+#define	PACK_GUID_SELF	PACK_GUID_sms
+
+enum {
+	MOD_ID_SMS_MAIN = MOD_ID_MAIN,
+	MOD_ID_SMS_OPEN_CONTACT,
+	MOD_ID_SMS_SEND,
+};
+
+typedef struct {
+#if defined(FTR_COMM_SESSION_SUPPORT)
+	t_HDataSet	hds_cs;
+#endif
+	t_HDataSet	ds;
+	int		view_index;
+}sms_glob_t;
+
+//2 widget resid for <ViewSMS>
+enum {
+	RESID_LIST_BUTTON = RESID_CTRL_DYNAMIC,
+	RESID_LIST_VIEW,
+	RESID_MENU_POPUP,
+};
+
+
+//2 <to>: name<number>;name<number>
+enum {
+	WITH_NONE,
+	WITH_TO,
+	WITH_CONTENT,
+};
+#define wnd_new_message(s, l)	wnd_show(wnd_create_by_resid(sms_NewMessageWndMsgHandler, (t_sparam)(s), (t_lparam)(l), brd_get(PACK_GUID_SELF), RESID_WIN_NEW_SMS))
+
+
+BEGIN_DECLARATION
+
+
+#if !defined(FTR_COMM_SESSION_SUPPORT) || defined(SMALL_LCD)
+error_t	sms_ViewWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+void	db_redraw_record(t_HDataSet hdb, int index, t_HGDI gdi, t_GuiViewType viewtype, int width, int height, gboolean hilight);
+void	db_view_record(t_HDataSet hds, int index);
+#endif
+	
+error_t	sms_MainWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+//3 sparam=<cs_rid>, lparam=<hdb_cs>
+error_t	sms_ViewSessionWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+//3 sparam=<cs_rid>, lparam=<hdb_cs>
+error_t	sms_ViewSessionDelWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+error_t	sms_NewMessageWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+
+
+#define	LINE_Y_SPLIT	2
+#define	LINE_X_BLANK	20
+#define	LINE_X_MARGIN	5
+
+t_HDataSource	ds_sms_new(t_HDataSet hds);
+int	ds_sms_delete(t_HDataSource h);
+int	ds_sms_forward(t_HDataSource h);
+
+END_DECLARATION
+
+#endif

@@ -1,0 +1,12 @@
+EXPORTS
+	; pack_info_explorer DATA
+	
+	class_DSExplorer DATA
+	DSExplorer_Create
+	DSExplorer_Bind
+	DSExplorer_SetPath
+	DSExplorer_SetFilter
+	DSExplorer_GetPath
+	DSExplorer_GetFname
+	listctrl_attach_explorer
+	

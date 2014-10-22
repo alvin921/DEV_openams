@@ -1,0 +1,58 @@
+#ifndef PACK_NES_HI
+#define PACK_NES_HI
+
+
+#include "pack_nes.h"
+#include "NES_resid.h"
+#include "pack_sys.h"
+
+
+#include "wgt_listctrl.h"
+#include "wgt_menu.h"
+#include "wgt_softkey.h"
+#include "wgt_label.h"
+#include "wgt_nesctrl.h"
+
+#define	PACK_GUID_SELF	PACK_GUID_nes
+
+#define MOD_ID_NES		1
+
+typedef struct {
+	gu32		v;
+}t_Global;
+
+BEGIN_DECLARATION
+	
+error_t	nes_MainWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+
+END_DECLARATION
+
+#endif
+#ifndef PACK_NES_HI
+#define PACK_NES_HI
+
+
+#include "pack_NES.h"
+#include "NES_resid.h"
+
+#include "nes.h"
+
+#include "DirectDraw.h"
+#include "DirectSound.h"
+#include "DirectInput.h"
+#include "wgt_softkey.h"
+
+#define	PACK_GUID_SELF	PACK_GUID_nes
+
+
+typedef struct {
+	gu32		v;
+}t_Global;
+
+BEGIN_DECLARATION
+	
+error_t	NES_MainWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+
+END_DECLARATION
+
+#endif

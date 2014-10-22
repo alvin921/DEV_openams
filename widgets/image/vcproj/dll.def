@@ -1,0 +1,6 @@
+EXPORTS
+	class_imagectrl DATA
+	imagectrl_set
+	imagectrl_set_by_resid
+	imagectrl_set_by_file
+	

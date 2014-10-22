@@ -1,0 +1,9 @@
+EXPORTS
+	class_nesctrl DATA
+	nesctrl_checkfile
+	nesctrl_run
+	nesctrl_stop
+	nesctrl_pause
+	nesctrl_resume
+	nesctrl_state
+	

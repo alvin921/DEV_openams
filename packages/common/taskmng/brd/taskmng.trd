@@ -1,0 +1,19 @@
+>string	ENGLISH	SM_CHINESE
+STR_TITLE	Task Manager	任务
+STR_ACTIVATE	SwitchTo	激活任务
+STR_KILL	Kill	终止任务
+
+>image
+ICON_APPLICATION	icon.bmp
+
+>widget	window	WIN_MAIN
+
+>widget	listctrl	LIST_TASK	WIN_MAIN
+
+>widget	menu	MENU_LISTVIEW	WIN_MAIN
+attr	invisible
+
+>widget	menu	MENU_CELLVIEW	WIN_MAIN
+attr	invisible
+
+

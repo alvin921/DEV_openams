@@ -1,0 +1,5 @@
+EXPORTS
+	;class_tabctrl DATA
+	tabctrl_get_cursor
+	tabctrl_set_cursor
+	tabctrl_set_title_style

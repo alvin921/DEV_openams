@@ -1,0 +1,5 @@
+EXPORTS
+	;class_onoff DATA
+	onoff_get_value
+	onoff_set_value
+	

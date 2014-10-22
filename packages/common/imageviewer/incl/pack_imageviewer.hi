@@ -1,0 +1,31 @@
+#ifndef PACK_imageviewer_HI
+#define PACK_imageviewer_HI
+
+
+#include "pack_imageviewer.h"
+#include "imageviewer_resid.h"
+
+#include "wgt_listctrl.h"
+#include "wgt_menu.h"
+#if defined(FTR_SOFT_KEY)
+#include "wgt_softkey.h"
+#endif
+#include "wgt_label.h"
+
+#define	PACK_GUID_SELF	PACK_GUID_imageviewer
+
+
+typedef struct {
+	char			cwd[AMOS_PATH_MAX+1];
+	g_strlist_t		*fnames;
+}t_Global;
+
+
+BEGIN_DECLARATION
+	
+error_t	imageviewer_MainWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+error_t	imageviewer_ViewWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+
+END_DECLARATION
+
+#endif

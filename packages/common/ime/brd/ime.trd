@@ -1,0 +1,17 @@
+>about
+author	alvin
+company	OpenAMS
+version	1.0
+discription	Sample application of OpenAMS
+
+>service
+#<mime-type>	<method>	<module id>
+
+>string	ENGLISH	SM_CHINESE
+
+>image
+IMG_IME_DIGIT_1	ime_vk_digit_1.jpg
+IMG_IME_DIGIT_2	ime_vk_digit_2.jpg
+IMG_IME_VK	ime_vk.jpg
+
+

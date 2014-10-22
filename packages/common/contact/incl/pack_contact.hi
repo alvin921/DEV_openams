@@ -1,0 +1,137 @@
+#ifndef PACK_contact_HI
+#define PACK_contact_HI
+
+
+#include "pack_contact.h"
+#include "contact_resid.h"
+
+#include "wgt_listctrl.h"
+#include "wgt_menu.h"
+#if defined(FTR_SOFT_KEY)
+#include "wgt_softkey.h"
+#endif
+#include "wgt_label.h"
+#include "wgt_editor.h"
+
+#include "db_contact.h"
+
+#define	PACK_GUID_SELF	PACK_GUID_contact
+
+
+enum {
+	MOD_ID_CONTACT_MAIN = MOD_ID_MAIN,
+	MOD_ID_CONTACT_OPEN,
+
+	MOD_ID_PHONENO_GETNAME = MOD_ID_FUNC,
+	MOD_ID_CONTACT_GETINFO,
+	MOD_ID_CONTACT_QUERY_INTERFACE,
+};
+
+typedef struct {
+	char		*name;
+	char		*ring;
+	char		*picture;
+	char		*email;
+	char		*address;
+	char		*remark;
+	contact_number_t	number;
+	gu32	birthday;
+	resid_t	ring_resid;
+	resid_t	picture_resid;
+	gu8		group;
+}contact_info_t;
+
+typedef struct {
+	t_Widget		common;
+	// TODO: add your own members here
+	t_HDataSet	hdb;	//2 CSession
+}t_ContactCtrl;
+
+
+enum {
+	BY_INDEX,
+	BY_CID,
+};
+
+
+enum {
+	BY_NONE,
+	BY_NUMBER,
+#if defined(FTR_COMM_SESSION_SUPPORT)
+	BY_SID,
+#endif
+};
+
+enum{
+	EDIT_BY_HDB,
+	EDIT_BY_CONTACT,		//2 t_MSArgContact
+};
+
+#if defined(FTR_NO_INPUT_KEY)
+#define	BTN_HEIGHT		20
+#define	BTN_WIDTH		40
+#define	BTN_Y_OFFSET	5
+#define	BTN_X_OFFSET	5
+#define	LIST_Y_OFFSET	(BTN_Y_OFFSET+BTN_HEIGHT+BTN_Y_OFFSET)
+#else
+#define	LIST_Y_OFFSET	0
+#endif
+
+#define	LINE_HEIGHT	prod_ui_list_item_height()
+
+//2 hdb非空表示内部加载，id为索引号；
+//2 hdb为空则表示外部加载，id为t_ContactID，即记录号
+#if defined(FTR_IPHONE_STYLE)
+#define	contact_ShowViewWindow(id, hdb)	wnd_show(wnd_create(contact_ViewWndMsgHandler, id, hdb))
+#else
+#define	contact_ShowViewWindow(id, hdb)	wnd_show(wnd_create_by_resid(contact_ViewWndMsgHandler, id, hdb, brd_get(PACK_GUID_SELF), RESID_WIN_DETAIL))
+#endif
+
+
+//2 进入编辑界面有如下几种场合: 
+//3 1. 新建联系人: (hdb)
+//3 2. 号码创建新联系人: (hdb, number)
+//3 3. 号码保存到现有联系人: (hdb, rid, number)
+//3 4. 编辑指定联系人: (hdb, rid)
+typedef struct{
+	t_HDataSet	hdb;
+	t_ContactID	cid;
+	MC_FILL_STRUCT2;
+	char			*number;
+}t_ContactEditWndParam;
+
+#define	contact_ShowEditWindow(h, r, num)		do {\
+	t_ContactEditWndParam __param; \
+	__param.hdb = h; \
+	__param.cid = r; \
+	__param.number = num; \
+	wnd_show(wnd_create_by_resid(contact_EditWndMsgHandler, 0, (t_lparam)(&__param), brd_get(PACK_GUID_SELF), RESID_WIN_EDIT_CONTACT)); \
+}while(0)
+
+#define	contact_AddNewWindow(hdb)		contact_ShowEditWindow(hdb, DB_RID_NULL, NULL)
+#define	contact_AddToWindow(hdb, rid, num)		contact_ShowEditWindow(hdb, rid, num)
+#define	contact_EditWindow(hdb, rid)		contact_ShowEditWindow(hdb, rid, NULL)
+
+#define	contact_ShowSettingWindow()	wnd_show(wnd_create_by_resid(contact_SettingWndMsgHandler, 0, 0, brd_get(PACK_GUID_SELF), RESID_WIN_SETTING))
+
+extern const resid_t	ga_phone_type_resid[CONTACT_F_NUMBER_N];
+extern const char ga_phone_type[CONTACT_F_NUMBER_N];
+
+
+
+
+BEGIN_DECLARATION
+
+
+int	contact_get_fnum_by_index(contact_number_t *phone, int index);
+error_t	contact_MainWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+error_t	contact_ViewWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+error_t	contact_EditWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+error_t	contact_SettingWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+error_t	contact_SelectPhoneWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+void	db_contact_redraw_record(t_HDataSet hdb, int index, t_HGDI gdi, t_GuiViewType viewtype, int width, int height, gboolean hilight);
+void	db_contact_view_record(t_HDataSet hdb, int index);
+
+END_DECLARATION
+
+#endif

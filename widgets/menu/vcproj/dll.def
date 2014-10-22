@@ -1,0 +1,8 @@
+EXPORTS
+	class_menu DATA
+	menu_bind
+	menu_GetSubMenu
+	menu_EnableItem
+	menu_GetItemID
+	menu_SetItemVisible
+	menu_SetItemPopup

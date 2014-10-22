@@ -1,0 +1,44 @@
+>about
+author	alvin
+company	OpenAMS
+version	1.0
+discription	This is my first iphone style demo product
+
+>service
+# mime	method	module
+sys/screensaver	open	0x01
+sys/shutdown	open	0x02
+
+>string	ENGLISH	SM_CHINESE
+STR_TITLE	Desktop	桌面
+STR_PROMPT_POWEROFF	Sure to switch off?	确定关机?
+
+>image
+ICON_APPLICATION	desktop.bmp
+IMG_BOTTOM	bottom.bmp
+IMG_SHORTCUT_BG	shortcut_bg.bmp
+IMG_ACTIVE	active.bmp
+IMG_DEACTIVE	deactive.bmp
+IMG_UNLOCK_BG	unlock_bg.bmp
+IMG_UNLOCK_SLIDER	unlock_slider.bmp
+IMG_POWEROFF_SLIDER	poweroff_slider.gif
+
+>widget	window	WIN_MAIN
+bg_color	0
+
+>widget	listctrl	LIST_MAIN_MENU	WIN_MAIN
+bound	240	320	0	0	240	213
+bound	240	400	0	0	240	284
+bound	272	480	0	0	272	355
+bound	320	480	0	0	320	355
+border	none
+bg_color	0
+
+>widget	listctrl	LIST_SHORTCUT	WIN_MAIN
+bound	240	320	0	233	240	71
+bound	240	400	0	304	240	80
+bound	272	480	0	375	272	80
+bound	320	480	0	375	320	80
+border	none
+bg_color	0
+

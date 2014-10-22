@@ -1,0 +1,9 @@
+>string	ENGLISH	SM_CHINESE
+STR_TITLE	Calendar	ÈÕÀú
+
+>image
+ICON_APPLICATION	Calendar.bmp
+
+>widget	window	WIN_MAIN
+title	STR_TITLE
+

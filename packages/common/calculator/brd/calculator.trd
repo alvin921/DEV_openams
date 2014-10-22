@@ -1,0 +1,14 @@
+>about
+author	alvin
+company	OpenAMS
+version	1.0
+discription	Simple Calculator of OpenAMS
+
+>string	ENGLISH	SM_CHINESE
+STR_TITLE	Calculator	¼ÆËãÆ÷
+
+>image
+ICON_APPLICATION	Calculator.bmp
+
+>widget	window	WIN_MAIN
+title	STR_TITLE

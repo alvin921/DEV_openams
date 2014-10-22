@@ -1,0 +1,86 @@
+>about
+author	alvin
+company	OpenAMS
+version	1.0
+discription	Messages
+
+>service
+# FTR_COMM_SESSION_SUPPORT defined
+sys/contact	open	1
+# FTR_COMM_SESSION_SUPPORT not defined
+#text/phone	query	1
+sys/contact	send	2
+
+>string	ENGLISH	SM_CHINESE
+STR_TITLE	SMS	短信息
+STR_VIEW_SMS	View SMS	查看短信
+STR_SEND_SMS	Send SMS	发送短信
+STR_NEW_SMS	New	新建
+STR_TO	To	收件人
+STR_ADD_TO	Add	添加收件人
+STR_RESEND	Resend	重发
+
+>image
+ICON_APPLICATION	sms.bmp
+
+#=====================================
+# 主界面
+>widget	window	WIN_MAIN
+title	STR_TITLE
+
+>widget	listctrl	LIST	WIN_MAIN
+bound	128	160	0	0	128	128
+bound	176	220	0	0	176	188
+bound	220	176	0	0	220	140
+bound	240	320	0	0	240	274
+bound	240	400	0	0	240	350
+bound	272	480	0	0	272	430
+bound	320	480	0	0	320	430
+border	none
+
+
+#=====================================
+# 短信创建界面
+>widget	window	WIN_NEW_SMS
+title	STR_NEW_SMS
+
+>widget	editor	EDITOR_TO	WIN_NEW_SMS
+bound	128	160	5	0	90	20
+bound	176	220	5	0	140	20
+bound	220	176	5	0	185	20
+bound	240	320	5	0	200	30
+bound	240	400	5	0	200	30
+bound	272	480	5	0	232	30
+bound	320	480	5	0	280	30
+title	STR_TO
+
+>widget	button	BTN_ADD_TO	WIN_NEW_SMS
+bound	128	160	95	0	20	20
+bound	176	220	145	0	20	20
+bound	220	176	195	0	20	20
+bound	240	320	210	0	30	30
+bound	240	400	210	0	30	30
+bound	272	480	242	0	30	30
+bound	320	480	290	0	30	30
+title		ICON_ADD
+
+>widget	editor	EDITOR_CONTENT	WIN_NEW_SMS
+bound	128	160	2	20	124	92
+bound	176	220	5	30	166	158
+bound	220	176	5	30	210	110
+bound	240	320	5	30	230	100
+bound	240	400	5	30	230	180
+bound	272	480	5	30	262	260
+bound	320	480	5	30	310	260
+border	frame
+
+>widget	label	LABEL_STATE	WIN_NEW_SMS
+bound	128	160	10	30	108	40
+bound	176	220	10	30	156	40
+bound	220	176	10	60	200	40
+bound	240	320	20	40	200	60
+bound	240	400	20	40	200	60
+bound	272	480	20	40	232	60
+bound	320	480	20	40	280	60
+border	frame
+attr	invisible

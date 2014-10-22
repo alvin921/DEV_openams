@@ -1,0 +1,29 @@
+#ifndef PACK_calendar_HI
+#define PACK_calendar_HI
+
+
+#include "pack_calendar.h"
+#include "calendar_resid.h"
+
+#include "wgt_listctrl.h"
+#include "wgt_menu.h"
+#if defined(FTR_SOFT_KEY)
+#include "wgt_softkey.h"
+#endif
+#include "wgt_label.h"
+
+#define	PACK_GUID_SELF	PACK_GUID_calendar
+
+
+typedef struct {
+	gu32		v;
+}t_Global;
+
+
+BEGIN_DECLARATION
+	
+error_t	calendar_MainWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+
+END_DECLARATION
+
+#endif

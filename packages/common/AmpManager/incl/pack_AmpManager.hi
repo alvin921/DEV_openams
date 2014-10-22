@@ -1,0 +1,48 @@
+#ifndef PACK_AmpManager_HI
+#define PACK_AmpManager_HI
+
+
+#include "pack_AmpManager.h"
+#include "AmpManager_resid.h"
+#include "pack_sys.h"
+#include "wgt_listctrl.h"
+#include "wgt_menu.h"
+#if defined(FTR_SOFT_KEY)
+#include "wgt_softkey.h"
+#endif
+#include "wgt_label.h"
+
+#define	PACK_GUID_SELF	PACK_GUID_AmpManager
+
+
+typedef struct {
+	gu32		v;
+}t_AmpManagerData;
+
+#define MOD_ID_AMP		1
+#define MOD_ID_EXE		2
+
+#define	MSG_AMP_REFRESH	EVT_USER+1
+
+
+typedef struct {
+	t_DataSource		common;
+	int		num;
+}t_DSInstall;
+
+BEGIN_DECLARATION
+	
+error_t	AmpManager_MainWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+error_t	AmpManager_ProdWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+error_t	AmpManager_PackWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+gboolean	AmpManager_ShowInfoWindow(const char *fname);
+void AmpManager_DisplayInfo(t_HWindow handle, t_AmpInfo *info);
+
+t_HDataSource	DSInstall_new(void);
+void	DSInstall_run(t_HDataSource h, int index);
+void	DSInstall_uninstall(t_HDataSource h, int index);
+
+
+END_DECLARATION
+
+#endif

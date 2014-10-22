@@ -1,0 +1,18 @@
+>string	ENGLISH	SM_CHINESE
+STR_TITLE	Settings	设置
+STR_LANGUAGE	Language	语言
+STR_DATETIME	Date Time	日期与时间
+STR_LANG_ENGLISH	English 英语
+STR_LANG_CHINESE	Chinese Simple	中文简体
+STR_FLIGHT_MODE	Flight Mode	飞行模式
+STR_NETWORK	Network	移动网络
+STR_NETWORK1	SIM1 Network	SIM1移动数据
+STR_NETWORK2	SIM2 Network	SIM2移动数据
+STR_NETWORK3	SIM3 Network	SIM3移动数据
+STR_NETWORK4	SIM4 Network	SIM4移动数据
+
+
+>image
+ICON_APPLICATION	setting.bmp
+
+

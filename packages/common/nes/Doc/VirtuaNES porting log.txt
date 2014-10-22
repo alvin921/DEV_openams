@@ -1,0 +1,30 @@
+目标：第一版本只支持最简单的功能，即接受按键输入，支持视频、音频输出
+
+计划：
+1）先将其他附加功能代码完全移除，切记：每移除一部分代码，在window下测试是否工作正常，成功则check in到svn版本库中
+
+2）将原版本中的direct draw、direct sound、direct input替换成ams平台类似的接口，继续在window下调试，注意也要做好版本管理
+
+3）成功后将c++代码转成c代码，继续在window下调试
+
+4）正式移植到ams平台下
+
+
+[20090511]
+现状: direct draw和direct sound都被成功替换, direct input暂时放下
+todo:
+	1) check in, 保存临时版本
+	2) 将所有无关Menu删除, 只保留Open/Close/Save/Load/Exit/About
+	3) 删除所有无关代码
+
+[20090603]
+Direct Input成功被替换成按键消息处理
+注意: 在Poll()函数里须加上按键检测duration(暂时定为40ms), 否则NES按键处理有问题,因为没有duration的话,Poll()会将按键清除, 而Poll()函数会被NES频繁调用,取决于NES芯片主频,按键可能检测不到. 而且durationi设置的话, 可支持多键并行检测,而某个时刻只可能一个按键按下
+
+这可通过在Poll()函数里面加上如下语句, 可知Poll()函数被多次调用,一次按键被多次检测到
+	if(m_SyncBits & NES_KEY_START){
+		DebugOut("Poll: return\n");
+	}else if(old & NES_KEY_START){
+		DebugOut("Poll: return clear\n");
+	}
+

@@ -1,0 +1,36 @@
+#ifndef PACK_taskmng_HI
+#define PACK_taskmng_HI
+
+#include "pack_taskmng.h"
+#include "taskmng_resid.h"
+
+#include "wgt_listctrl.h"
+#include "wgt_menu.h"
+#if defined(FTR_SOFT_KEY)
+#include "wgt_softkey.h"
+#endif
+#include "wgt_label.h"
+
+#define	PACK_GUID_SELF	PACK_GUID_taskmng
+#define	COL_SIZE_WIDTH	60
+#define	LINE_X_MARGIN	5
+#define	LINE_Y_MARGIN	2
+
+typedef struct {
+	t_HList		listctrl;
+}t_TaskmngGlobData;
+
+BEGIN_DECLARATION
+
+error_t	taskmng_MainWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+
+t_HDataSource DSTask_new(void);
+void	DSTask_activate(t_HDataSource h, int index);
+void	DSTask_kill(t_HDataSource h, int index);
+void	DSTask_add(t_HDataSource h, t_TaskID tid);
+void	DSTask_remove(t_HDataSource h, t_TaskID tid);
+
+
+END_DECLARATION
+
+#endif

@@ -1,0 +1,19 @@
+#ifndef PACK_ime_HI
+#define PACK_ime_HI
+
+
+#include "pack_ime.h"
+#include "ime_resid.h"
+#include "pack_sys.h"
+
+
+#define PACK_GUID_SELF		PACK_GUID_ime
+ 
+
+
+BEGIN_DECLARATION
+	
+
+END_DECLARATION
+
+#endif

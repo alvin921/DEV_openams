@@ -1,0 +1,9 @@
+>string	ENGLISH	SM_CHINESE
+STR_TITLE	EReader	µç×ÓÊé
+
+>image
+ICON_APPLICATION	PDFViewer.bmp
+
+>widget	window	WIN_MAIN
+title	STR_TITLE
+

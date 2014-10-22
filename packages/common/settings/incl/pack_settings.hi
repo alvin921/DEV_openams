@@ -1,0 +1,42 @@
+#ifndef PACK_settings_HI
+#define PACK_settings_HI
+
+
+#include "pack_settings.h"
+#include "settings_resid.h"
+
+#include "wgt_listctrl.h"
+#include "wgt_menu.h"
+#if defined(FTR_SOFT_KEY)
+#include "wgt_softkey.h"
+#endif
+#include "wgt_label.h"
+
+#include "wgt_onoff.h"
+
+#include "pack_sys.h"
+
+#define	PACK_GUID_SELF	PACK_GUID_settings
+
+typedef struct {
+	gu32 v;
+}setting_glob_t;
+
+#if defined(FTR_IPHONE_STYLE)
+#define	X_OFFSET	5
+#define	Y_OFFSET	5
+#else
+#define	X_OFFSET	0
+#define	Y_OFFSET	0
+#endif
+
+BEGIN_DECLARATION
+	
+error_t	settings_MainWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+error_t	settings_NetworkWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+error_t	settings_LanguageWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+
+
+END_DECLARATION
+
+#endif

@@ -1,0 +1,64 @@
+#ifndef PACK_bluetooth_HI
+#define PACK_bluetooth_HI
+
+
+#include "pack_bluetooth.h"
+#include "bluetooth_resid.h"
+#include "pack_sys.h"
+#include "wgt_softkey.h"
+#include "wgt_button.h"
+
+#define PACK_GUID_SELF		PACK_GUID_bluetooth
+
+
+typedef struct {
+	gu8		addr[6];
+	char		name[BT_NAME_MAX+1];
+	
+	t_BtDevice	devices[BT_DEVICE_MAX];
+	gu8	searching;
+	gu8 state;
+}bluetooth_glob_t;
+
+
+
+//2 BTVIEW窗口控件，只能在配对后浏览，lsk即debond并关闭窗口
+enum{
+	RESID_BTVIEW_FIRST = RESID_CTRL_DYNAMIC,
+	RESID_BTVIEW_LIST_OVERVIEW,
+	RESID_BTVIEW_LIST_PROFILE,
+	RESID_BTVIEW_BTN_REFRESH,
+	RESID_BTVIEW_BTN_CONNECT,	//2 connnect/disconnect复用
+	RESID_BTVIEW_BTN_DISCONNECT,
+};
+
+enum {
+	LIST_IDX_NAME,		//2 pic(name)
+	LIST_IDX_ADDR,		//2 xx:xx:xx:xx:xx:xx
+	//LIST_IDX_LINK,		//2 xx:xx...xx:xx
+	LIST_IDX_STATE,	//2 state
+	LIST_OVERVIEW_NUM
+};
+
+typedef struct {
+	t_BtDevice	*dev;
+	t_BtIdent		id;
+	
+	gs8			f_down;
+	gs8			p_down;		// phone number index for <f_down>=F_PHONE
+	MC_FILL_STRUCT1;
+}t_ViewBtWData;
+
+
+BEGIN_DECLARATION
+	
+error_t	bluetooth_MainWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+error_t	bluetooth_ViewWndMsgHandler(t_HWindow handle, t_WidgetEvent evt, t_sparam sparam, t_lparam lparam);
+const char*	bt_profile_string(t_BtProfileID profile);
+t_HImage	bt_get_cod_icon(gu32 cod);
+const char *	bt_get_state_string(gu8 state);
+void	bt_evt_callback(t_sparam sparam, t_lparam lparam, void *userdata);
+
+END_DECLARATION
+
+#endif

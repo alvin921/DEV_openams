@@ -1,0 +1,81 @@
+OnEmulationStart(fname, check);
+	nes=NES(fname);
+		cpu=CPU(nes)
+		ppu=PPU(nes)
+		apu=APU(nes)
+		pad=PAD(nes)
+		rom=ROM(fname)
+		mapper=CreateMapper(nes, rom->GetMaperNo())
+		NesSub_MemoryInitial()
+		LoadSRAM()
+		LoadDISK()
+	Emu.start();	// in EmuThread.cpp
+		CreateThread( NULL, 0, ThreadProc, 0, 0, &m_dwThreadID )
+
+
+==========================================================================
+按键：
+使用DirectInput获取，按键信息存储在DirectInput.m_Sw[]中，数组下标即为DIK_XXX，如果非0则表示DIK_XXX键有按下
+玩家按键控制存储在Config.controller.nButton[4][64]中，其中
+[0][0]: 表示player1的上方向键
+[0][1]: 表示player1的下方向键
+[0][2]: 表示player1的左方向键
+[0][3]: 表示player1的右方向键
+[0][4]: 表示player1的A键，即跳跃
+[0][5]: 表示player1的B键，即发射子弹
+[0][6]: 表示player1的A Rapid键？
+[0][7]: 表示player1的B Rapid键
+[0][8]: 表示player1的SELECT键
+[0][9]: 表示player1的START键
+
+--------------------------------------
+两个任天堂的游戏棒可以通过$4016和$4017存取。为了复位游戏棒，先在$4016写$01，然后是$00。这将在游戏棒的电路里发生个闪光(??)。然后可以在$4016(Joystick#0)或$4017(Joystick#1)读取了。每次必然的(??)读取将返回一个单一的按钮在第0位的状态（1表示按下，0表没有）。
+
+Read # |    0      1      2      3      4      5      6      7      8      9
+-------+---------------------------------------------------------------------
+Button |    A      B   SELECT   START   UP    DOWN   LEFT  RIGHT  A Rapid  B Rapid
+
+即：
+0x01: A
+0x02: B
+0x04: SELECT
+0x08: START
+0x10: UP
+0x20: DOWN
+0x40: LEFT
+0x80: RIGHT
+0x100: A Rapid
+0x200: B Rapid
+
+最多支持4个玩家，以下数据是每个玩家的按键检测过程
+PAD::Strobe(): 
+	pad1bit <= padbitsync[0]; 
+	pad2bit <= padbitsync[1]; 
+	pad3bit <= padbitsync[2]; 
+	pad4bit <= padbitsync[3]
+PAD::VSync(): 
+	padbitsync[0] <= padbit[0];
+	padbitsync[1] <= padbit[1];
+	padbitsync[2] <= padbit[2];
+	padbitsync[3] <= padbit[3];
+PAD::Sync():
+	padbit[0] <= SyncSub( 0 );
+	padbit[1] <= SyncSub( 1 );
+	padbit[2] <= SyncSub( 2 );
+	padbit[3] <= SyncSub( 3 );
+PAD::SyncSub():
+	检测按键，porting时在此添加平台相关代码
+
+
+==========================================================================
+显示：在Snapshot()中可分析其存储结构
+ppu->GetScreenPtr()获取的图像数据是8位的调色板索引值（因此这是个256色的位图数据，调色板数据如何获取后面描述），数据大小是（8+W+8）*H，中间的W*H才是真实的图像数据，在输出到文件（BMP、PNG）或者屏幕时须注意
+
+调色板：用户可以设置调色板，默认的调色板加载如下：
+DirectDraw.GetPaletteData()
+
+
+
+
+
+
